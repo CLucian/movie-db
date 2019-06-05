@@ -20,6 +20,7 @@ const Pagination = (props) => {
 							<a href="#">{i}</a>
 						</li> : ''
 					} */}
+					{/* { pageLinks }  */}
 				</ul>
 			</div>
 		</div>
