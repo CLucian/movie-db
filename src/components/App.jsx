@@ -5,7 +5,7 @@ import { debounce } from 'lodash';
 import Nav from './Nav';
 import SearchBox from './SearchBox';
 import MovieList from './MovieList';
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 import Pages from './Pages';
 
 
@@ -13,6 +13,8 @@ import Pages from './Pages';
 const API_KEY = `${process.env.REACT_APP_API}`;
 const URL = "https://api.themoviedb.org/3/search/movie?api_key=";
 const query = "&query=";
+
+const defaultMovies = [];
 
 class App extends React.Component {
   constructor() {
@@ -28,10 +30,15 @@ class App extends React.Component {
     }
 
     this.debouncedSearch = debounce((term) => {
+      if (!term) {
+        console.log(term);
+        return this.setState({ movies: []})
+      }
       this.fetchMovies(term)
       console.log('NOW DO THE SEARCH!')
-    }, 1000)
+    }, 1000) 
   }
+
 
   fetchMovies = (search) => {
     fetch(URL + `${API_KEY}` + query + search + "&page=" + this.state.pageNum )
@@ -48,9 +55,16 @@ class App extends React.Component {
   }
 
   updateSearchTerm = (e) => {
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value }, () => { 
-      this.debouncedSearch(this.state.searchTerm);
+    this.setState({ 
+      searchTerm: e.target.value,
+      pageNum: 1
+    }, () => {
+      
+      const term = this.state.searchTerm
+
+      if (term.length > 2) { 
+        this.debouncedSearch(term);
+      } 
     });
   };
 
@@ -107,7 +121,7 @@ class App extends React.Component {
         <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} />
         <Pages nextPage={this.nextPage} prevPage={this.prevPage} />
         <MovieList movies={this.state.movies} />
-        { this.state.totalResults > 20 ? <Pagination nextPage={this.nextPage} currentPage={this.state.currentPage} /> : '' }
+        {/* { this.state.totalResults > 20 ? <Pagination nextPage={this.nextPage} currentPage={this.state.currentPage} /> : '' } */}
       </div>
     );
   }
