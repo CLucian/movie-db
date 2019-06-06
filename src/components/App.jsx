@@ -2,10 +2,11 @@
 import React from 'react';          
 import { debounce } from 'lodash';
 
+import Backdrop from './Backdrop';
 import Nav from './Nav';
 import SearchBox from './SearchBox';
 import MovieList from './MovieList';
-// import Pagination from './Pagination';
+import Pagination from './Pagination';
 import Pages from './Pages';
 
 
@@ -25,18 +26,17 @@ class App extends React.Component {
       searchTerm: '',
       totalPages: null,
       totalResults: 0,
-      pageNum: 1,
-      currentPage: 1
+      pageNum: 1
     }
 
     this.debouncedSearch = debounce((term) => {
-      if (!term) {
-        console.log(term);
+      if (term === '') {
+        console.log(term)
         return this.setState({ movies: []})
       }
       this.fetchMovies(term)
       console.log('NOW DO THE SEARCH!')
-    }, 1000) 
+    }, 600) 
   }
 
 
@@ -45,11 +45,16 @@ class App extends React.Component {
       .then(res => res.json())
       .then(json => {
         console.log(json);
-        this.setState({
-          movies: json.results,
-          totalPages: json.total_pages,
-          currentPage: json.page
-        })
+        if (json.results) {
+          this.setState({
+            movies: json.results,
+            totalPages: json.total_pages,
+            pageNum: json.page
+          })
+        }
+        else {
+          this.setState({ movies: [] });
+        }
       })
     .catch((err) => console.log('PARSING FAILURE', err));
   }
@@ -64,7 +69,9 @@ class App extends React.Component {
 
       if (term.length > 2) { 
         this.debouncedSearch(term);
-      } 
+      } else {
+        this.debouncedSearch('');
+      }
     });
   };
 
@@ -79,8 +86,7 @@ class App extends React.Component {
   // }
 
   nextPage = (pageNumber) => {
-    if (this.state.movies && this.state.currentPage < this.state.totalPages) {
-      console.log(this.state.pageNum)
+    if (this.state.movies && this.state.pageNum < this.state.totalPages) {
       this.setState({ 
         pageNum: this.state.pageNum + 1
       }, () => this.fetchMovies(this.state.searchTerm))
@@ -90,20 +96,13 @@ class App extends React.Component {
 
   // Want to add functionality to make sure you can't go back past page 1 --> Use API JSON object???
   prevPage = (pageNumber) => {
-    if (this.state.movies && this.state.currentPage > 1) {
+    if (this.state.movies && this.state.pageNum> 1) {
       this.setState({
         pageNum: this.state.pageNum - 1
       }, () => this.fetchMovies(this.state.searchTerm))
     }
   }
 
-
-  // Active search filter
-  // filterSearch = (e) => {
-  //   this.setState({ searchTerm: e.target.value }, () => { 
-  //     this.fetchMovies(this.state.searchTerm);
-  //   });
-  // };
 
  
 
@@ -119,9 +118,12 @@ class App extends React.Component {
       <div className="App">
         <Nav />
         <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} />
+        <Backdrop />
+        {/* {this.movies.backdrop_path} */}
         <Pages nextPage={this.nextPage} prevPage={this.prevPage} />
         <MovieList movies={this.state.movies} />
-        {/* { this.state.totalResults > 20 ? <Pagination nextPage={this.nextPage} currentPage={this.state.currentPage} /> : '' } */}
+        {/* <Pagination totalPages={this.state.totalPages} currentPage={this.state.currentPage} />
+        { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : '' } */}
       </div>
     );
   }
