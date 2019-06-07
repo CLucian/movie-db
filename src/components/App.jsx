@@ -27,6 +27,7 @@ class App extends React.Component {
       totalPages: null,
       totalResults: 0,
       currentPage: 1,
+      pageNum: 1,
       pageLinkNum: 1
     }
 
@@ -45,15 +46,14 @@ class App extends React.Component {
   ///////////////////////////////
 
   fetchMovies = (search) => {
-    fetch(URL + `${API_KEY}` + query + search + "&page=" + this.state.currentPage )
+    fetch(URL + `${API_KEY}` + query + search + "&page=" + this.state.pageNum )
       .then(res => res.json())
       .then(json => {
         console.log(json);
         if (json.results) {
           this.setState({
             movies: json.results,
-            totalPages: json.total_pages,
-            currentPage: json.page
+            totalPages: json.total_pages
           })
         }
         else {
@@ -69,7 +69,8 @@ class App extends React.Component {
 
   updateSearchTerm = (e) => {
     this.setState({ 
-      searchTerm: e.target.value
+      searchTerm: e.target.value,
+      pageNum: 1
     }, () => {
       
       const term = this.state.searchTerm
@@ -82,9 +83,10 @@ class App extends React.Component {
     });
   };
 
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ currentPage: 1 });
+    this.setState({ pageNum: 1 });
     this.fetchMovies(this.state.searchTerm);
   }
 
@@ -93,18 +95,18 @@ class App extends React.Component {
   ///////////////////////////////
 
   nextPage = (pageNumber) => {
-    if (this.state.movies && this.state.currentPage < this.state.totalPages) {
+    if (this.state.movies && this.state.pageNum < this.state.totalPages) {
       this.setState({ 
-        currentPage: this.state.currentPage + 1
+        pageNum: this.state.pageNum + 1
       }, () => this.fetchMovies(this.state.searchTerm))
     }
   }
 
 
   prevPage = (pageNumber) => {
-    if (this.state.movies && this.state.currentPage > 1) {
+    if (this.state.movies && this.state.pageNum > 1) {
       this.setState({
-        currentPage: this.state.currentPage - 1
+        pageNum: this.state.pageNum - 1
       }, () => this.fetchMovies(this.state.searchTerm))
     }
   }
@@ -112,9 +114,12 @@ class App extends React.Component {
 
   pageLink = (pageNumber) => {
     this.setState({
-      currentPage: pageNumber
+      pageNum: pageNumber
     }, () => this.fetchMovies(this.state.searchTerm))
   }
+
+  // WE HAVE TO RESET THE STATE WHEN TYPING A NEW VALUE FROM THE PAGE LINK
+
 
   // pageLink = (pageNumber) => {
   //   fetch(URL + `${API_KEY}` + query + `${this.state.searchTerm}` + "&page=" + pageNumber)
