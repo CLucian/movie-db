@@ -3,11 +3,11 @@ import React from 'react';
 import { debounce } from 'lodash';
 
 import Backdrop from './Backdrop';
-import Nav from './Nav';
-import SearchBox from './SearchBox';
 import MovieList from './MovieList';
+import Nav from './Nav';
 import Pagination from './Pagination';
 import Pages from './Pages';
+import SearchBox from './SearchBox';
 
 
 
@@ -142,7 +142,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Nav />
+        {/* <Nav /> */}
         <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} />
         <Backdrop />
         {/* {this.movies.backdrop_path} */}

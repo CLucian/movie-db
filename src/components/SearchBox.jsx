@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBox = (props) => {
 	return (
-		<div className="container">
+		<div className="container--searchbox">
 			<div className="row">
 				<form action="" onSubmit={props.handleSubmit}>
 					<div className="input-field">

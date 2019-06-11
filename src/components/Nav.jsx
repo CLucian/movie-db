@@ -4,7 +4,8 @@ const Nav = () => {
 	return (
 		<div>
 			<nav>
-				<h1>Movie Database</h1>
+				<ul>
+				</ul>
 			</nav>
 		</div>
 	)

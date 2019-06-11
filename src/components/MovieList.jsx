@@ -7,8 +7,8 @@ const MovieList = (props) => {
 				{
 					props.movies.map((movie, i) => {
 						return (
-							<div>
-								<div>
+							<div className="container">
+								<div className="__row">
 									<Movie key={i} movieTitle={movie.original_title} posterImage={movie.poster_path} backdropImage={movie.backdrop_path} />
 								</div>
 							</div>

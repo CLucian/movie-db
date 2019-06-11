@@ -1,0 +1,16 @@
+.background-image {
+	height: 95vh;
+	// opacity: 0.6;
+	background-image: linear-gradient(
+		to right bottom,
+			rgba(238,76,124, 0.3),
+			rgba(154,23,80, 0.8)),
+	url('../img/imageBigger.jpg');
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.container--searchbox {
+	
+}
