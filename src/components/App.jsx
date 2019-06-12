@@ -40,6 +40,10 @@ class App extends React.Component {
       this.fetchMovies(term)
       console.log('NOW DO THE SEARCH!')
     }, 600) 
+
+    this.nextPage = this.changePage.bind(this, 1);
+    this.prevPage = this.changePage.bind(this, -1);
+
   }
 
 
@@ -68,24 +72,6 @@ class App extends React.Component {
   ///////////////////////////////
   // POPULAR SEARCHES
   ///////////////////////////////
-
-  // fetchTrending = (e) => {
-  //   fetch(tURL + `${API_KEY}`)
-  //   .then(res => res.json())
-  //   .then(json => {
-  //     console.log(json);
-  //     if (json.results) {
-  //       this.setState({
-  //         movies: json.results,
-  //         totalPages: json.total_pages
-  //       })
-  //     }
-  //     else {
-  //       this.setState({ movies: [] });
-  //     }
-  //   })
-  //   .catch((err) => console.log('PARSING FAILURE', err));
-  // }
 
   handleSubmitTrending = (e) => {
     e.preventDefault();
@@ -139,22 +125,39 @@ class App extends React.Component {
   // PAGE CHANGING
   ///////////////////////////////
 
-  nextPage = (pageNumber) => {
-    if (this.state.movies && this.state.pageNum < this.state.totalPages) {
-      this.setState({ 
-        pageNum: this.state.pageNum + 1
-      }, () => this.fetchMovies(this.state.searchTerm))
+  changePage = (dir) => {
+    let pageNumber = this.state.pageNum;
+
+    if (this.state.movies.length === 0) {
+      return 
+    } 
+    if (dir === 1 && pageNumber < this.state.totalPages){
+      pageNumber += 1;
+    } else if (dir === -1 && pageNumber > 1) {
+      pageNumber -= 1;
     }
+    this.setState({
+      pageNum: pageNumber
+    }, () => this.fetchMovies(this.state.searchTerm))
   }
 
 
-  prevPage = (pageNumber) => {
-    if (this.state.movies && this.state.pageNum > 1) {
-      this.setState({
-        pageNum: this.state.pageNum - 1
-      }, () => this.fetchMovies(this.state.searchTerm))
-    }
-  }
+  // nextPage = () => {
+  //   if (this.state.movies && this.state.pageNum < this.state.totalPages) {
+  //     this.setState({ 
+  //       pageNum: this.state.pageNum + 1
+  //     }, () => this.fetchMovies(this.state.searchTerm))
+  //   }
+  // }
+
+
+  // prevPage = () => {
+  //   if (this.state.movies && this.state.pageNum > 1) {
+  //     this.setState({
+  //       pageNum: this.state.pageNum - 1
+  //     }, () => this.fetchMovies(this.state.searchTerm))
+  //   }
+  // }
 
 
   pageLink = (pageNumber) => {
