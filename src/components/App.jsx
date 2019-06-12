@@ -13,6 +13,7 @@ import SearchBox from './SearchBox';
 
 const API_KEY = `${process.env.REACT_APP_API}`;
 const URL = "https://api.themoviedb.org/3/search/movie?api_key=";
+const tURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=";
 const query = "&query=";
 
 // const defaultMovies = [];
@@ -28,7 +29,8 @@ class App extends React.Component {
       totalResults: 0,
       currentPage: 1,
       pageNum: 1,
-      pageLinkNum: 1
+      pageLinkNum: 1,
+      popIndex: 30
     }
 
     this.debouncedSearch = debounce((term) => {
@@ -61,6 +63,49 @@ class App extends React.Component {
         }
       })
     .catch((err) => console.log('PARSING FAILURE', err));
+  }
+
+  ///////////////////////////////
+  // POPULAR SEARCHES
+  ///////////////////////////////
+
+  // fetchTrending = (e) => {
+  //   fetch(tURL + `${API_KEY}`)
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     console.log(json);
+  //     if (json.results) {
+  //       this.setState({
+  //         movies: json.results,
+  //         totalPages: json.total_pages
+  //       })
+  //     }
+  //     else {
+  //       this.setState({ movies: [] });
+  //     }
+  //   })
+  //   .catch((err) => console.log('PARSING FAILURE', err));
+  // }
+
+  handleSubmitTrending = (e) => {
+    e.preventDefault();
+
+    fetch(tURL + `${API_KEY}`)
+      .then(data => data.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ movies: data.results })
+      })
+  }
+
+  trendingMovies = () => {
+    this.fetchTrending(this.state.movies);
+  }
+
+  handleTrendingSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ pageNum: 1 });
+    this.fetchTrending(this.state.movies);
   }
 
   ///////////////////////////////
@@ -143,8 +188,8 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* <Nav /> */}
-        <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} />
-        <Backdrop />
+        <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} handleSubmitTrending={this.handleSubmitTrending} />
+        {/* <Backdrop /> */}
         {/* {this.movies.backdrop_path} */}
         <Pages nextPage={this.nextPage} prevPage={this.prevPage} />
         <MovieList movies={this.state.movies} />

@@ -9,6 +9,7 @@ const SearchBox = (props) => {
 						<input placeholder="Search movie" type="text" onChange={props.updateSearchTerm} />
 					</div>
 					<button onClick={props.handleSubmit}>Submit</button>
+					<button onClick={props.handleSubmitTrending}>Discover</button>
 				</form>
 			</div>
 		</div>

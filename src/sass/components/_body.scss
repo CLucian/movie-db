@@ -1,16 +1,25 @@
-.background-image {
-	height: 95vh;
+.hero-box {
 	// opacity: 0.6;
 	background-image: linear-gradient(
 		to right bottom,
-			rgba(238,76,124, 0.3),
-			rgba(154,23,80, 0.8)),
+			rgba(227,226,223, 0.5),
+			rgba(227,226,223, 0.5)),
 	url('../img/imageBigger.jpg');
 	background-attachment:fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
+	// display: flex;
+
+
 }
 
 .container--searchbox {
 	
 }
+
+
+
+// rgba(154,23,80)
+// rgba(238,76,124)
+
+// rgba(227,226,223, 0.3)
