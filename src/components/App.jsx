@@ -2,33 +2,31 @@
 import React from 'react';          
 import { debounce } from 'lodash';
 
+// component imports
 import Backdrop from './Backdrop';
 import MovieList from './MovieList';
-import Nav from './Nav';
 import Pagination from './Pagination';
 import Pages from './Pages';
 import SearchBox from './SearchBox';
 
+// url import
+import { constructTrendingURL, constructSearchURL } from '../utils/url.js';
 
-
-const API_KEY = `${process.env.REACT_APP_API}`;
-const URL = "https://api.themoviedb.org/3/search/movie?api_key=";
-const tURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=";
-const query = "&query=";
-
-// const defaultMovies = [];
 
 class App extends React.Component {
   constructor() {
     super()
+
+    this.resultsType = ''
+
     this.state = {
       isLoaded: true,
       movies: [],
       searchTerm: '',
       totalPages: null,
       totalResults: 0,
-      currentPage: 1,
       pageNum: 1,
+      trendingPage: 1,
       pageLinkNum: 1,
       popIndex: 30
     }
@@ -46,13 +44,19 @@ class App extends React.Component {
 
   }
 
+  
+
+
 
   ///////////////////////////////
   // API FETCHING
   ///////////////////////////////
 
   fetchMovies = (search) => {
-    fetch(URL + `${API_KEY}` + query + search + "&page=" + this.state.pageNum )
+    this.resultsType = 'search';
+
+    const url = constructSearchURL(search, this.state.pageNum)
+    fetch(url)
       .then(res => res.json())
       .then(json => {
         console.log(json);
@@ -73,26 +77,26 @@ class App extends React.Component {
   // POPULAR SEARCHES
   ///////////////////////////////
 
-  handleSubmitTrending = (e) => {
-    e.preventDefault();
+  fetchTrending = () => {
+    this.resultsType = 'trending';
+    
+    const url = constructTrendingURL(this.state.pageNum)
 
-    fetch(tURL + `${API_KEY}`)
+    fetch(url)
       .then(data => data.json())
       .then(data => {
         console.log(data);
-        this.setState({ movies: data.results })
+        this.setState({ 
+          movies: data.results,
+          totalPages: data.total_pages
+         })
       })
   }
 
-  trendingMovies = () => {
-    this.fetchTrending(this.state.movies);
+  handleTrending = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchTrending())
   }
 
-  handleTrendingSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ pageNum: 1 });
-    this.fetchTrending(this.state.movies);
-  }
 
   ///////////////////////////////
   // SEARCH
@@ -125,21 +129,33 @@ class App extends React.Component {
   // PAGE CHANGING
   ///////////////////////////////
 
+  // dir = direction
   changePage = (dir) => {
     let pageNumber = this.state.pageNum;
 
     if (this.state.movies.length === 0) {
       return 
     } 
-    if (dir === 1 && pageNumber < this.state.totalPages){
+    console.log("PAGE NUMBER:", pageNumber)
+    if (dir === 1){
       pageNumber += 1;
+      
+    console.log("PAGE NUMBER:", pageNumber)
     } else if (dir === -1 && pageNumber > 1) {
       pageNumber -= 1;
     }
     this.setState({
       pageNum: pageNumber
-    }, () => this.fetchMovies(this.state.searchTerm))
+    }, () => {
+      if (this.resultsType === 'trending') {
+        this.fetchTrending()
+      } else if (this.resultsType === 'search') {
+        this.fetchMovies(this.state.searchTerm)
+      }
+    })
   }
+
+
 
 
   // nextPage = () => {
@@ -191,10 +207,20 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* <Nav /> */}
-        <SearchBox updateSearchTerm={this.updateSearchTerm} handleSubmit={this.handleSubmit} handleSubmitTrending={this.handleSubmitTrending} />
+        <SearchBox 
+          updateSearchTerm={this.updateSearchTerm}
+          handleSubmit={this.handleSubmit}
+          handleTrending={this.handleTrending}
+        />
+
         {/* <Backdrop /> */}
         {/* {this.movies.backdrop_path} */}
-        <Pages nextPage={this.nextPage} prevPage={this.prevPage} />
+        <Pages 
+          nextPage={this.nextPage} 
+          prevPage={this.prevPage} 
+          pageNum={this.state.pageNum}
+          totalPages={this.state.totalPages}
+        />
         <MovieList movies={this.state.movies} />
         { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pageLink={this.pageLink} currentPage={this.state.currentPage} /> : '' }
       </div>
