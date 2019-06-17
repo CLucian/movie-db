@@ -11,7 +11,7 @@ const Pages = (props) => {
 				</button>
 				: null 
 			}
-			{props.pageNum > 1 ?
+			{ props.pageNum > 1 ?
 				<button className="prevPage" onClick={props.prevPage}>
 					Previous Page
 				</button>

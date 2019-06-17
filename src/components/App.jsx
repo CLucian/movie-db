@@ -123,7 +123,7 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({ pageNum: 1 });
     this.fetchMovies(this.state.searchTerm);
-  }
+  } 
 
   ///////////////////////////////
   // PAGE CHANGING
@@ -155,47 +155,27 @@ class App extends React.Component {
     })
   }
 
+  ///////////////////////////////
+  // PAGINATION
+  ///////////////////////////////
 
+  pagination = (pageNumber) => {
+    // pageNumber = 1;
 
-
-  // nextPage = () => {
-  //   if (this.state.movies && this.state.pageNum < this.state.totalPages) {
-  //     this.setState({ 
-  //       pageNum: this.state.pageNum + 1
-  //     }, () => this.fetchMovies(this.state.searchTerm))
-  //   }
-  // }
-
-
-  // prevPage = () => {
-  //   if (this.state.movies && this.state.pageNum > 1) {
-  //     this.setState({
-  //       pageNum: this.state.pageNum - 1
-  //     }, () => this.fetchMovies(this.state.searchTerm))
-  //   }
-  // }
-
-
-  pageLink = (pageNumber) => {
     this.setState({
       pageNum: pageNumber
-    }, () => this.fetchMovies(this.state.searchTerm))
+    }, () => {
+      if (this.resultsType === 'trending') {
+        this.fetchTrending()
+      } else if (this.resultsType === 'search') {
+        this.fetchMovies(this.state.searchTerm)
+      }
+    })
   }
 
-  // WE HAVE TO RESET THE STATE WHEN TYPING A NEW VALUE FROM THE PAGE LINK
-
-
-  // pageLink = (pageNumber) => {
-  //   fetch(URL + `${API_KEY}` + query + `${this.state.searchTerm}` + "&page=" + pageNumber)
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       this.setState({
-  //         movies: json.results,
-  //         currentPage: pageNumber
-  //       })
-  //     })
-  // }
-
+  ///////////////////////////////
+  // RENDER
+  ///////////////////////////////
 
   render() {
     if(!this.state.isLoaded) {
@@ -211,6 +191,7 @@ class App extends React.Component {
           updateSearchTerm={this.updateSearchTerm}
           handleSubmit={this.handleSubmit}
           handleTrending={this.handleTrending}
+          searchTerm={this.state.searchTerm}
         />
 
         {/* <Backdrop /> */}
@@ -222,7 +203,7 @@ class App extends React.Component {
           totalPages={this.state.totalPages}
         />
         <MovieList movies={this.state.movies} />
-        { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pageLink={this.pageLink} currentPage={this.state.currentPage} /> : '' }
+        { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
       </div>
     );
   }
@@ -233,3 +214,7 @@ export default App;
 
 // API KEY  6b81323b3985de25250ad91d5c48d5b2
 
+
+// TO DO LIST
+// 1. WHEN SWITCHING FROM DISCOVER PAGE 2 TO SUBMIT PAGE MAKE IT GO DEFAULT TO PAGE 1 INSTEAD OF PAGE 2
+// 2. WHEN CLICKING SUBMIT FIRST TIME, GOES TO PAGE DISCOVER PAGE WAS ON LAST - WHEN CLICKIGN SUBMIT TWICE, RESETS BACK TO PAGE 1 FOR SPIDERMAN
