@@ -13,6 +13,7 @@ import SearchBox from './SearchBox';
 import { constructTrendingURL, constructSearchURL } from '../utils/url.js';
 
 
+
 class App extends React.Component {
   constructor() {
     super()
@@ -28,16 +29,8 @@ class App extends React.Component {
       pageNum: 1,
       trendingPage: 1,
       pageLinkNum: 1,
-      popIndex: 30
+      popIndex: 5
     }
-
-    this.debouncedSearch = debounce((term) => {
-      if (term === '') {
-        return this.setState({ movies: []})
-      }
-      this.fetchMovies(term)
-      console.log('NOW DO THE SEARCH!')
-    }, 600) 
 
     this.nextPage = this.changePage.bind(this, 1);
     this.prevPage = this.changePage.bind(this, -1);
@@ -70,12 +63,22 @@ class App extends React.Component {
           this.setState({ movies: [] });
         }
       })
-    .catch((err) => console.log('PARSING FAILURE', err));
+      .catch((err) => console.log('PARSING FAILURE', err));
   }
 
-  ///////////////////////////////
-  // POPULAR SEARCHES
-  ///////////////////////////////
+  handleChange = (e) => {
+    this.setState({ searchTerm: e.target.value, pageNum: 1 });
+  }
+
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ pageNum: 1 }, () => {
+      this.fetchMovies(this.state.searchTerm);
+    });
+    this.fetchMovies(this.state.searchTerm);
+  }
+
 
   fetchTrending = () => {
     this.resultsType = 'trending';
@@ -98,32 +101,8 @@ class App extends React.Component {
   }
 
 
-  ///////////////////////////////
-  // SEARCH
-  ///////////////////////////////
 
-  updateSearchTerm = (e) => {
-    this.setState({ 
-      searchTerm: e.target.value,
-      pageNum: 1
-    }, () => {
-      
-      const term = this.state.searchTerm
-
-      if (term.length > 2) { 
-        this.debouncedSearch(term);
-      } else {
-        this.debouncedSearch('');
-      }
-    });
-  };
-
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ pageNum: 1 });
-    this.fetchMovies(this.state.searchTerm);
-  } 
+ 
 
   ///////////////////////////////
   // PAGE CHANGING
@@ -160,8 +139,6 @@ class App extends React.Component {
   ///////////////////////////////
 
   pagination = (pageNumber) => {
-    // pageNumber = 1;
-
     this.setState({
       pageNum: pageNumber
     }, () => {
@@ -188,8 +165,8 @@ class App extends React.Component {
       <div className="App">
         {/* <Nav /> */}
         <SearchBox 
-          updateSearchTerm={this.updateSearchTerm}
           handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
           handleTrending={this.handleTrending}
           searchTerm={this.state.searchTerm}
         />

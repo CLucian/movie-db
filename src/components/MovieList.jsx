@@ -9,7 +9,7 @@ const MovieList = (props) => {
 						return (
 							<div className="container">
 								<div className="__row">
-									<Movie key={i} movieTitle={movie.original_title} posterImage={movie.poster_path} backdropImage={movie.backdrop_path} />
+									<Movie key={i} popIndex={movie.popularity} movieTitle={movie.original_title} posterImage={movie.poster_path} backdropImage={movie.backdrop_path} />
 								</div>
 							</div>
 						)
