@@ -8,6 +8,11 @@ import MovieList from './MovieList';
 import Pagination from './Pagination';
 import Pages from './Pages';
 import SearchBox from './SearchBox';
+// import Movie from './Movie';
+
+
+// styles imports
+import '../sass/main.scss';
 
 // url import
 import { constructTrendingURL, constructSearchURL } from '../utils/url.js';
@@ -193,5 +198,10 @@ export default App;
 
 
 // TO DO LIST
-// 1. WHEN SWITCHING FROM DISCOVER PAGE 2 TO SUBMIT PAGE MAKE IT GO DEFAULT TO PAGE 1 INSTEAD OF PAGE 2
-// 2. WHEN CLICKING SUBMIT FIRST TIME, GOES TO PAGE DISCOVER PAGE WAS ON LAST - WHEN CLICKIGN SUBMIT TWICE, RESETS BACK TO PAGE 1 FOR SPIDERMAN
+
+// ADD IN PAGINATION LIMIT
+// TAKE OUT NEXT AND PREVIOUS PAGE
+// DEBUG
+// IMPLEMENT MOVIE PAGE WHEN CLICKING MOVIE
+    // --> BRIEF SUMMARY
+    // --> RATING

@@ -1,0 +1,45 @@
+@import '../variables/variables';
+
+
+.movie-thumbnail {
+	border-radius: 3px;
+	border: 1px solid #fff;
+}
+
+
+.movieHeader {
+	color: #fff;
+	font-size: 1.5rem;
+	text-align: center;
+	word-wrap: break-word;
+}
+
+.button-discover {
+	color: blue;
+	width: 100px;
+}
+
+.movie-container {
+	margin-bottom: 10rem;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+
+.movie-card {
+	margin: 7rem;
+	max-width: 18.5rem;
+	max-height: 23rem;
+}
+
+
+
+
+
+// flex-direct: row, row-reverse, column-reverse
+// justify-content: center, space-between, space-around, space-evenly, flex-end (default)
+// align-items: center, flex-start, flex-end, stretch, baseline, 
+// align-self: flex-end, flex-start, stretch
+// order: -1, etc (lowest number starts first, highest goes to the end)

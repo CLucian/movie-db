@@ -17,12 +17,10 @@ const Pages = (props) => {
 				</button>
 				: null
 			}
-			{/* <button className="prevPage" onClick={props.prevPage}>
-				Previous Page
-			</button> */}
 		</div>
 	)
 }
 
 
 export default Pages;
+

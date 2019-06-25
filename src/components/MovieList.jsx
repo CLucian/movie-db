@@ -12,7 +12,7 @@ const MovieList = (props) => {
 		)
 	console.log(movieData)
 	return(
-		<div className="container">
+		<div className="movie-container">
 				{ movieData }
 		</div>
 	)

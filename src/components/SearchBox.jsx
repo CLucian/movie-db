@@ -9,7 +9,7 @@ const SearchBox = (props) => {
 						<input placeholder="Search movie" type="text" onChange={props.handleChange} />
 					</div>
 					{ props.searchTerm.length > 0 ? <button onClick={props.handleSubmit}>Submit</button> : null }
-					<button type="button" onClick={props.handleTrending}>Discover</button>
+					<button className="button-discover" type="button" onClick={props.handleTrending}>Discover</button>
 				</form>
 			</div>
 		</div>
