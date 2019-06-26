@@ -3,10 +3,11 @@ import React from 'react';
 export function paginationNumber(currentPage, totalPages) {
 	let startPage;
 	let endPage;
+	let page1 = 1;
 
 	if (totalPages <= 5) {
 		startPage = 1;
-		endPage = 5;
+		endPage = totalPages;
 	} else {
 		if (currentPage <= 3) {
 			startPage = 1;
@@ -43,23 +44,28 @@ const Pagination = (props) => {
 
 
 	for(let i = startPage; i <= endPage; i++) {
-		let activePage = currentPage === i ? 'active' : '';
-
-		pageLinks.push(<li key={i + 'z'} className={activePage} onClick={() => props.pagination(i)}><a href="#">{i}</a></li>);
+		pageLinks.push(
+			<li key={i + 'z'} style={{textDecoration: currentPage === i ? 'underline': 'none', pointerEvents: currentPage === i ? 'none': ''}} onClick={() => props.pagination(i)}><a href="#">{i}</a></li>
+		);
 
 		console.log('This is the current page number:', currentPage)
 	}
 
-	
 
 	return (
 		<div>
 			<ul className="pagination-links">
+				<li style={{display: currentPage === 1 ? 'none' : ''}} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
+				<li>...</li>
 				{ pageLinks }
+				<li>...</li>
+				<li style={{ display: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
 			</ul>
 		</div>
 	)
 }
+
+// if activePage ? <span style = {{ 'text-decoration': 'underline' }}></span> : '';
 
 
 export default Pagination;

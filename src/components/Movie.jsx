@@ -6,7 +6,7 @@ const Movie = (props) => {
 	let pop = props.popIndex;
 	let popularity;
 	// console.log(pop)
-	if (pop < 2) {
+	if (pop < 0.0001) {
 		popularity = null;
 	} else {
 
@@ -16,13 +16,13 @@ const Movie = (props) => {
 				{
 					props.posterImage == null ? 
 						<div>
-							<h1 className="movieHeader">{props.movieTitle}</h1>
 							<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
+							<h1 className="movieHeader">{props.movieTitle}</h1>
 						</div> 
 						:
 						<div>
-							<h1 className="movieHeader">{props.movieTitle}</h1>
 							<img src={`https://image.tmdb.org/t/p/w185${props.posterImage}`} className="movie-thumbnail" alt="card" />
+							<h1 className="movieHeader">{props.movieTitle}</h1>
 						</div>
 				}
 

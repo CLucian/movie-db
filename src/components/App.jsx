@@ -186,6 +186,12 @@ class App extends React.Component {
         />
         <MovieList movies={this.state.movies} />
         { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
+        <Pages
+          nextPage={this.nextPage}
+          prevPage={this.prevPage}
+          pageNum={this.state.pageNum}
+          totalPages={this.state.totalPages}
+        />
       </div>
     );
   }
@@ -199,9 +205,7 @@ export default App;
 
 // TO DO LIST
 
-// ADD IN PAGINATION LIMIT
-// TAKE OUT NEXT AND PREVIOUS PAGE
-// DEBUG
-// IMPLEMENT MOVIE PAGE WHEN CLICKING MOVIE
-    // --> BRIEF SUMMARY
-    // --> RATING
+// 1. add an active page underline when you are on the page + add unclickable active page
+// 2. add a click to go to next page function.
+// 3. If typed something nonsensical in search --> output "Sorry we couldn't find that page"
+// 4. add a first and last page
