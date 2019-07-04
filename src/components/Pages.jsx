@@ -6,7 +6,7 @@ const Pages = (props) => {
 	return (
 		<div className="directional-buttons">
 			{ props.movies.length >= 1 ? <button className="prevPage dirButtons" onClick={props.prevPage} style={{ pointerEvents: props.pageNum > 1 ? '' : 'none' }}>&#8249;</button> : null }
-			{ props.movies.length >= 1 ? <button className="nextPage dirButtons" onClick={props.nextPage} style={{ pointerEvents: props.pageNum < props.totalPages ? '' : 'none' }}>&#8250;</button> : null }
+			{props.movies.length >= 1 ? <button className="nextPage dirButtons" onClick={props.nextPage} style={{ pointerEvents: props.pageNum < props.totalPages ? '' : 'none' }}>&#8250;</button> : null }
 		</div> 
 	)
 }

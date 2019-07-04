@@ -7,12 +7,12 @@ const MovieList = (props) => {
 		.sort((a, b) => b.popularity - a.popularity)
 		.map((movie, i) => 
 			<div>
-				<Movie key={i} popIndex={movie.popularity} movieTitle={movie.original_title} posterImage={movie.poster_path} backdropImage={movie.backdrop_path} />
+				<Movie key={i} movieInfo={props.movieInfo} movieId={movie.id} popIndex={movie.popularity} movieTitle={movie.original_title} posterImage={movie.poster_path} backdropImage={movie.backdrop_path} />
 			</div>
 		)
 	console.log(movieData)
 	return(
-		<div className="movie-container">
+		<div className="movie-container" style={{ cursor: "pointer" }}>
 				{ movieData }
 		</div>
 	)

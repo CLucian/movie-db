@@ -8,6 +8,7 @@ import MovieList from './MovieList';
 import Pagination from './Pagination';
 import Pages from './Pages';
 import SearchBox from './SearchBox';
+import MovieInfo from './MovieInfo';
 // import Movie from './Movie';
 
 
@@ -34,7 +35,8 @@ class App extends React.Component {
       pageNum: 1,
       trendingPage: 1,
       pageLinkNum: 1,
-      popIndex: 5
+      popIndex: 5,
+      currentMovie: null
     }
 
     this.nextPage = this.changePage.bind(this, 1);
@@ -156,6 +158,31 @@ class App extends React.Component {
   }
 
   ///////////////////////////////
+  // MOVIE OVERVIEW
+  ///////////////////////////////
+
+  movieInfo = (id) => {
+    const filteredMovie = this.state.movies.filter(movie => movie.id === id)
+    const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
+
+    this.setState({ currentMovie: newCurrentMovie })
+
+  }
+
+  closeMovieInfo = () => {
+    this.setState({ currentMovie: null })
+  }
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////
   // RENDER
   ///////////////////////////////
 
@@ -168,15 +195,26 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {/* <Nav /> */}
-        <SearchBox 
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          handleTrending={this.handleTrending}
-          searchTerm={this.state.searchTerm}
-        />
+        {this.state.currentMovie === null ? 
+        <div>
+          <SearchBox
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            handleTrending={this.handleTrending}
+            searchTerm={this.state.searchTerm}
+          /> 
+          <MovieList movies={this.state.movies} movieInfo={this.movieInfo} />
+        </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} /> }
 
-        <MovieList movies={this.state.movies} />
+{/* 
+           <SearchBox 
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            handleTrending={this.handleTrending}
+            searchTerm={this.state.searchTerm}
+          /> */}
+
+        
         {this.state.totalPages > 1 ? <Pagination movies={this.state.movies} totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
         <Pages
           nextPage={this.nextPage}
