@@ -9,11 +9,21 @@
 @import "components/movie";
 
 
-// $color-primary: 
-// $color-primary-light:
-// $color-primary-dark:
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
 
+
+//button
+$color1: #EE283E;
+$color2: #1F3944;
+$color3: white;
 
 
 // #E3AFBC
@@ -37,6 +47,114 @@ html {
 	// display: flex;
 
 }
+
+.input-field {
+
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+}
+
+.submit {
+	outline: none;
+	padding: 0.5rem;
+	position: relative;
+
+	button {
+		padding: 1rem;
+
+	}
+}
+
+.searchForm {
+	width: 30%;
+}
+
+.search-button {
+	position: absolute;
+	bottom: 2.07rem;
+	border-radius: 5rem;
+	border: none;
+	background-color: transparent;
+	height: 0.8rem;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:active {
+		transform: translateY(0.2rem);
+	}
+
+	&__searchIcon {
+	height: 2rem;
+	width: 2rem;
+	
+	}	
+
+}
+
+
+.input-field input[type="text"] {
+	background: $color-white;
+	outline: none;
+	border: none;
+	background-color: $color-light;
+	padding: 1rem 1rem 1rem 3rem;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+	font-size: 1.5rem;
+	width: 100%;
+	border-radius: 4rem;
+	text-decoration: none;
+	padding-left: 4rem;
+
+}
+
+.discover {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+
+
+	&__button {
+		// height: 2rem;
+		padding: 0.5rem;
+		width: 10rem;
+		border-radius: 1rem;
+		font-size: 1.5rem;
+		font-family: "Raleway", sans-serif;
+		font-weight: 500;
+		background-color: yellow;
+		cursor: pointer;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+
+.input-field {
+	padding-top: 4rem;
+	display: flex;
+	// justify-content: center;
+}
+
+.searchTerm {
+	color: black;
+	border-radius: 1rem;
+	border: 0.2rem solid $color-white;
+	height: 2rem;
+	width: 20%;
+	display: flex;
+	// justify-content: center;
+}
+
+
 
 .pagination-links {
 	display: flex;
@@ -62,6 +180,33 @@ html {
 		}
 	}
 }
+
+
+.directional-buttons {
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3rem;
+	
+}
+
+.dirButtons {
+	text-decoration: none;
+	display: inline-block;
+	padding: 0.2rem 3rem;
+	font-size: 2rem;
+	border: 0rem;
+	border-radius: 50%;
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	outline: none;
+}
+
+// button:focus {
+// 	outline: 0;
+// }
+
 
 
 .active-page a {

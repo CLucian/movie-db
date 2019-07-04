@@ -176,14 +176,6 @@ class App extends React.Component {
           searchTerm={this.state.searchTerm}
         />
 
-        {/* <Backdrop /> */}
-        {/* {this.movies.backdrop_path} */}
-        <Pages 
-          nextPage={this.nextPage} 
-          prevPage={this.prevPage} 
-          pageNum={this.state.pageNum}
-          totalPages={this.state.totalPages}
-        />
         <MovieList movies={this.state.movies} />
         { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
         <Pages
