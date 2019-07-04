@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as Search } from "../img/SVG/search.svg";
+// import { ReactComponent as Search } from "../img/SVG/search.svg";
 
 const SearchBox = (props) => {
 	return (
@@ -8,20 +8,20 @@ const SearchBox = (props) => {
 			<div className="row">
 				<form action="" onSubmit={props.handleSubmit} className="searchForm">
 					<div className="input-field">
-						<input placeholder="Search movie" type="text" onChange={props.handleChange} className="__searchTerm" />
+						<input placeholder="Search Movie Title..." type="text" onChange={props.handleChange} className="__searchTerm" />
 					</div>
-					<div className="submit">{
+					{/* <div className="submit">{
 						props.searchTerm.length > 0 ? 
 						<button className="search-button" onClick={props.handleSubmit}>
 							<Search className="search-button__searchIcon" />
 						</button>
 			 			: null}
-			 		</div>
+			 		</div> */}
 
-					<div className="discover">
-						<button className="discover__button" type="button" onClick={props.handleTrending}>Discover</button>
-					</div>
 				</form>
+				<div className="discover">
+					<button className="discover__button" type="button" onClick={props.handleTrending}>Popular Movies</button>
+				</div>
 			</div>
 		</div>
 	)

@@ -177,12 +177,13 @@ class App extends React.Component {
         />
 
         <MovieList movies={this.state.movies} />
-        { this.state.totalPages > 1 ? <Pagination totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
+        {this.state.totalPages > 1 ? <Pagination movies={this.state.movies} totalPages={this.state.totalPages} pagination={this.pagination} pageNum={this.state.pageNum} /> : '' }
         <Pages
           nextPage={this.nextPage}
           prevPage={this.prevPage}
           pageNum={this.state.pageNum}
           totalPages={this.state.totalPages}
+          movies={this.state.movies}
         />
       </div>
     );
