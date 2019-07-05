@@ -49,27 +49,37 @@ const Pagination = (props) => {
 		);
 
 		console.log('This is the current page number:', currentPage)
+		console.log('THIS IS THE TOTAL NUMBER OF PAGES:', props.totalPages);
 	}
 
 
 	return (
 		<div>
 			{
-				props.movies.length >= 1 ?
-					<ul className="pagination-links">
-						<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
-						<li>...</li>
-						{ pageLinks }
-						<li>...</li>
-						<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
-					</ul>
-				: null
+				<ul className="pagination-links">
+					<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
+					<li>...</li>
+					{ pageLinks }
+					<li>...</li>
+					<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
+				</ul>
 			}
 		</div>
 	)
 }
 
-// if activePage ? <span style = {{ 'text-decoration': 'underline' }}></span> : '';
+// {
+// 	props.totalPages > 1 ?
+// 		<ul className="pagination-links">
+// 			<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
+// 			<li>...</li>
+// 			{pageLinks}
+// 			<li>...</li>
+// 			<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>
+// 		</ul>
+// 		: null
+// }
+
 
 
 export default Pagination;

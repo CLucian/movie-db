@@ -15,7 +15,7 @@ const MovieInfo = (props) => {
 				<div className="container-12">
 					<div className="container">
 						<p>{props.currentMovie.title}</p>
-						<p>{props.currentMovie.release_date}</p>
+						<p>{props.currentMovie.release_date.substring(5).split("-").concat(props.currentMovie.release_date.substring(0, 4)).join("/")}</p>
 						<p>{props.currentMovie.overview}</p>
 					</div>
 				</div>
