@@ -27,3 +27,12 @@ export default MovieList;
 // 		</div>
 // 	)
 // })
+
+
+
+// return (
+// 	<div className="movie-container" style={{ cursor: "pointer" }}>
+// 		{movieData}
+// 	</div>
+// )
+// }
