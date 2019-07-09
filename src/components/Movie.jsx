@@ -11,7 +11,7 @@ const Movie = (props) => {
 	} else {
 
 		popularity = 
-			<div className="BLAH BLAH BLAH">
+			<div>
 
 				{
 					props.posterImage == null ? 
@@ -27,13 +27,6 @@ const Movie = (props) => {
 							<h1 className="movieHeader">{props.movieTitle}</h1>
 						</div>
 				}
-
-				{/* {
-					props.backdropImage == null ? <img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} alt="card" style={{ width: "50%", height: "360px" }} /> :
-						<div>
-							<img src={`https://image.tmdb.org/t/p/w300${props.backdropImage}`} alt="cardbackdrop" />
-						</div>
-				} */}
 
 			</div>
 	}

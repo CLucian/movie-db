@@ -1,5 +1,39 @@
-.movieInfo-container {
-	width: 100%;
+
+.movieInfo {
+	margin: 4rem;
+}
+
+
+.containerInfo {
+	border-radius: 0.5rem;
+	max-width: 60%;
+	max-height: 51.3rem;
+	vertical-align: middle;
+	box-shadow: 0.3rem 0.3rem 10rem 0.5rem black;
+}
+
+.info {
+	font-size: 1.7rem;
+	font-family: Raleway;
+	font-weight: 300;
+	margin-bottom: 3rem;
+	color: white;
+
+}
+
+.infoTitle {
+	margin-bottom: 0.5rem;
+	color: #00FC87
+}
+
+
+.container h1 {
+	font-family: "Oswald", sans-serif;
+	font-weight: 300;
+	font-size: 5rem;
+	margin-bottom: 2rem;
+	margin-top: 0.5rem;
+	color: white;
 }
 
 .backdrop {
@@ -12,7 +46,7 @@
 	 linear-gradient(
 		 rgba(0,0,0,.85) 15%,
 		 rgba(0,0,0,.2) 40%,
-		 #000 90%
+		 #000 95%
 	);
 
 	&--movieBackground {
@@ -35,16 +69,22 @@ img .backdrop--movieBackground {
 			rgba(0,0,0, 0.2));
 }
 
+
 .containerInfo {
-	margin-top: 12rem;
-	background-color: red;
+	margin-top: 5rem;
 	position: absolute;
+	background-color: #0B0C10;
+	opacity: 0.9;
 	width: 75%;
 	display: flex;
+
+	&--picture img {
+		border-radius: 0.2rem;
+	}
 }
 
 .container {
-	font-size: 2.5rem;
+	font-size: 2rem;
 }
  
 .goback {
