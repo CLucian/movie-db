@@ -1,4 +1,8 @@
 import React from 'react';
+import { ReactComponent as Search } from "../img/SVG/search.svg";
+import { ReactComponent as Instagram } from "../img/SVG/instagram.svg";
+import { ReactComponent as Twitter } from "../img/SVG/twitter.svg";
+import { ReactComponent as Github } from "../img/SVG/github.svg";
 
 const MovieInfo = (props) => {
 	return (
@@ -9,7 +13,7 @@ const MovieInfo = (props) => {
 			<div className="row go-back" onClick={props.closeMovieInfo}>
 				<span className="goback">Go Back</span>
 			</div>
-			<div className="row">
+			<div className="row-info">
 				<div className="containerInfo">
 					<div className="containerInfo--picture">
 					{props.currentMovie.poster_path === null ? <img src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
@@ -28,6 +32,14 @@ const MovieInfo = (props) => {
 						</div>
 					</div>
 				</div>
+			<div className="developer">
+				<p className="developer--text">Designed and Developed by Lucian Covic</p>
+				<div className="developer--svgs">
+					<a href="https://www.instagram.com/looseein_c/"><Instagram className="svg" /></a>
+					<a href="https://www.twitter.com/"><Twitter className="svg" /></a>
+					<a href="https://github.com/CLucian"><Github className="svg" /></a>
+				</div>
+			</div>
 			</div>
 		</div>
 	)

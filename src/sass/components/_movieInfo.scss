@@ -1,6 +1,10 @@
 
+.movieInfo-container {
+	height: 100vh;
+}
+
 .movieInfo {
-	margin: 4rem;
+	margin: 3rem;
 }
 
 
@@ -26,6 +30,41 @@
 	color: #00FC87
 }
 
+// .row {
+// 	height: 100%;
+// }
+
+.developer {
+	z-index: 99;
+	position: relative;
+	color: white;
+	float: bottom;
+	margin: 0 auto;
+	text-align: center;
+
+	&--text  {
+		font-size: 2rem;
+		color: gray;
+		font-size: 1.3rem;
+		font-family: "Roboto Condensed", Sans-serif;
+		font-weight: 300;
+		text-shadow: 1px 1px 1px #000;
+
+	}
+
+	&--svgs {
+		padding: 1rem;
+
+		a {
+			.svg {
+				padding: 1rem;
+				fill: #00FC87;
+			}
+		}
+		
+	}
+}
+
 
 .container h1 {
 	font-family: "Oswald", sans-serif;
@@ -44,9 +83,9 @@
 	background-size: cover;
 	background-image:
 	 linear-gradient(
-		 rgba(0,0,0,.85) 15%,
-		 rgba(0,0,0,.2) 40%,
-		 #000 95%
+		 rgba(0,0,0,.80) 15%,
+		 rgba(0,0,0,.1) 40%,
+		 #000 90%
 	);
 
 	&--movieBackground {
@@ -55,7 +94,7 @@
 		z-index: -2;
 		width: 100%;
 		max-width: 100%;
-		max-height: 100vh;
+		max-height: 99vh;
 		margin: auto;
 		background-size: cover;
 
@@ -72,17 +111,22 @@ img .backdrop--movieBackground {
 
 .containerInfo {
 	margin-top: 5rem;
-	position: absolute;
+	position: relative;
 	background-color: #0B0C10;
 	opacity: 0.9;
 	width: 75%;
 	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin: 6rem auto;
 
 	&--picture img {
 		border-radius: 0.2rem;
 	}
 }
 
+
+ 
 .container {
 	font-size: 2rem;
 }
@@ -93,9 +137,11 @@ img .backdrop--movieBackground {
 
 .go-back {
 	color: white;
-	font-size: 10rem;
+	font-size: 2rem;
 	cursor: pointer;
 }
+
+
 
 // .hero-box {
 // 	display: none;
