@@ -3,7 +3,6 @@ import React from 'react';
 import { debounce } from 'lodash';
 
 // component imports
-import Backdrop from './Backdrop';
 import MovieList from './MovieList';
 import Pagination from './Pagination';
 import Pages from './Pages';
@@ -74,16 +73,25 @@ class App extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({ searchTerm: e.target.value, pageNum: 1 });
+    this.setState({ searchTerm: e.target.value });
+    // Took out pageNum: 1  in the state
   }
 
-
+// This doesn't work properly
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('----THIS IS THE CURRENT SEARCH TERM-----:', this.state.searchTerm);
+    console.log('----THIS IS THE CURRENT MOVIE DATA-----:', this.state.movies);
+    if(this.state.searchTerm.length === 0) {
+      this.setState({ movies: [], searchTerm: '', totalPages: null }, () => {
+        this.fetchMovies(this.state.searchTerm);
+      })
+    } else {
+
     this.setState({ pageNum: 1 }, () => {
       this.fetchMovies(this.state.searchTerm);
     });
-    this.fetchMovies(this.state.searchTerm);
+    }
   }
 
 
@@ -107,7 +115,9 @@ class App extends React.Component {
     this.setState({ pageNum: 1 }, () => this.fetchTrending())
   }
 
-
+  fetchNowPlaying = () => {
+    
+  }
 
  
 

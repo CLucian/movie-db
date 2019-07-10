@@ -56,13 +56,15 @@ const Pagination = (props) => {
 	return (
 		<div>
 			{
-				<ul className="pagination-links">
-					<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
-					<li>...</li>
-					{ pageLinks }
-					<li>...</li>
-					<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
-				</ul>
+				props.totalPages >= 1 ?
+					<ul className="pagination-links">
+						<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
+						<li>...</li>
+						{ pageLinks }
+						<li>...</li>
+						<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
+					</ul>
+				: null
 			}
 		</div>
 	)
