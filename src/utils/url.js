@@ -11,8 +11,9 @@ export function constructTrendingURL(page) {
 }
 
 export function constructNowPlayingURL(page) {
-	return `{BASE}/movie/now_playing?api_key=${API_KEY}&page=${page}`
+	return `${BASE}/movie/now_playing?api_key=${API_KEY}&page=${page}`
 }
 
-
-
+export function constructTopRatedURL(page) {
+	return `${BASE}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+}

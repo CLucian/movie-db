@@ -15,7 +15,7 @@ import MovieInfo from './MovieInfo';
 import '../sass/main.scss';
 
 // url import
-import { constructTrendingURL, constructSearchURL } from '../utils/url.js';
+import { constructTrendingURL, constructSearchURL, constructNowPlayingURL, constructTopRatedURL } from '../utils/url.js';
 
 
 
@@ -94,6 +94,14 @@ class App extends React.Component {
     }
   }
 
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   this.setState({ pageNum: 1 }, () => {
+  //     this.fetchMovies(this.state.searchTerm);
+  //   });
+  // }
+  
+
 
   fetchTrending = () => {
     this.resultsType = 'trending';
@@ -115,10 +123,46 @@ class App extends React.Component {
     this.setState({ pageNum: 1 }, () => this.fetchTrending())
   }
 
+  
   fetchNowPlaying = () => {
-    
+    this.resultsType = 'nowPlaying';
+
+    const url = constructNowPlayingURL(this.state.pageNum)
+
+    fetch(url)
+    .then(data => data.json())
+    .then(data => {
+      this.setState({
+        movies: data.results,
+        totalPages: data.total_pages
+      })
+    })
   }
 
+  componentDidMount(){
+    this.fetchNowPlaying();
+  }
+
+
+  handleNowPlaying = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchNowPlaying())
+  }
+
+
+  fetchTopRated = () => {
+    this.resultsType = 'topRated';
+
+    const url = constructTopRatedURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
  
 
   ///////////////////////////////
@@ -147,6 +191,10 @@ class App extends React.Component {
         this.fetchTrending()
       } else if (this.resultsType === 'search') {
         this.fetchMovies(this.state.searchTerm)
+      } else if (this.resultsType === 'nowPlaying') {
+        this.fetchNowPlaying()
+      } else if (this.resultsType === 'topRated') {
+        this.fetchTopRated()
       }
     })
   }
@@ -163,6 +211,10 @@ class App extends React.Component {
         this.fetchTrending()
       } else if (this.resultsType === 'search') {
         this.fetchMovies(this.state.searchTerm)
+      } else if (this.resultsType === 'nowPlaying') {
+        this.fetchNowPlaying()
+      } else if (this.resultsType === 'topRated') {
+        this.fetchTopRated()
       }
     })
   }
@@ -211,7 +263,10 @@ class App extends React.Component {
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
             handleTrending={this.handleTrending}
+            handleNowPlaying={this.handleNowPlaying}
             searchTerm={this.state.searchTerm}
+            fetchNowPlaying={this.fetchNowPlaying}
+            fetchTopRated={this.fetchTopRated}
           /> 
           <MovieList movies={this.state.movies} movieInfo={this.movieInfo} />
         </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} /> }
