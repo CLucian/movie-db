@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import { ReactComponent as Discover } from "../img/SVG/ticket.svg";
+import comedy from '../img/SVG/comedy.png';
+import action from '../img/SVG/Arnold.png';
+import adventure from '../img/SVG/Sheen.png';
+import crime from '../img/SVG/batman.png';
+import horror from '../img/SVG/knife.png';
+import romance from '../img/SVG/rose.png';
+import sciFi from '../img/SVG/leo.png';
+import war from '../img/SVG/war.png';
 
 
 // import { ReactComponent as Search } from "../img/SVG/search.svg";
@@ -24,8 +32,17 @@ class SearchBox extends Component {
 					</form>
 					<div className="discover">
 						<Discover className="discoverbtn" onClick={this.props.handleTrending} />
-						<button onClick={this.props.handleNowPlaying}>Now Playing</button>
-						<button onClick={this.props.fetchTopRated}>Top Rated</button>
+						<button className="btn-genre" onClick={this.props.handleNowPlaying}>Now Playing</button>
+						<button className="btn-genre" onClick={this.props.handleTopRated}>Top Rated</button>
+						<button className="btn-genre" onClick={this.props.handleAction}><img className="icon-picture" src={action} alt="action" />Action</button>
+						<button className="btn-genre" onClick={this.props.handleAdventure}><img className="icon-picture" src={adventure} alt="adventure" />Adventure</button>
+						<button className="btn-genre" onClick={this.props.handleComedy}><img className="icon-picture" src={comedy} alt="comedy"/>Comedy</button>
+						<button className="btn-genre" onClick={this.props.handleCrime}><img className="icon-picture" src={crime} alt="crime" />Crime</button>
+						<button className="btn-genre" onClick={this.props.handleHorror}><img className="icon-picture" src={horror} alt="horror" />Horror</button>
+						<button className="btn-genre" onClick={this.props.handleRomance}><img className="icon-picture" src={romance} alt="romance" />Romance</button>
+						<button className="btn-genre" onClick={this.props.handleSciFi}><img className="icon-picture" src={sciFi} alt="sciFi" />Sci-Fi</button>
+						<button className="btn-genre" onClick={this.props.handleWar}><img className="icon-picture" src={war} alt="war" />War</button>
+						
 						{/* <button className="discover__button" type="button" onClick={props.handleTrending}>Popular Movies</button> */}
 					</div>
 				</div>

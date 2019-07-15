@@ -15,7 +15,9 @@ import MovieInfo from './MovieInfo';
 import '../sass/main.scss';
 
 // url import
-import { constructTrendingURL, constructSearchURL, constructNowPlayingURL, constructTopRatedURL } from '../utils/url.js';
+import { constructTrendingURL, constructSearchURL, constructNowPlayingURL, constructTopRatedURL, constructActionURL, constructAdventureURL,
+  constructComedyURL, constructCrimeURL, constructHorrorURL, constructRomanceURL, constructSciFiURL, constructWarURL
+} from '../utils/url.js';
 
 
 
@@ -163,6 +165,165 @@ class App extends React.Component {
         })
       })
   }
+
+  handleTopRated = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchTopRated())
+  }
+
+  
+  fetchAction = () => {
+    this.resultsType = 'action';
+
+    const url = constructActionURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleAction = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchAction())
+  }
+
+  fetchAdventure = () => {
+    this.resultsType = 'adventure';
+
+    const url = constructAdventureURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleAdventure = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchAdventure())
+  }
+
+  fetchComedy = () => {
+    this.resultsType = 'comedy';
+
+    const url = constructComedyURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+  
+  handleComedy = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchComedy())
+  }
+
+
+  fetchCrime = () => {
+    this.resultsType = 'crime';
+
+    const url = constructCrimeURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleCrime = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchCrime())
+  }
+
+  fetchHorror = () => {
+    this.resultsType = 'horror';
+
+    const url = constructHorrorURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleHorror = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchHorror())
+  }
+ 
+  fetchRomance = () => {
+    this.resultsType = 'romance';
+
+    const url = constructRomanceURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleRomance = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchRomance())
+  }
+
+  fetchSciFi = () => {
+    this.resultsType = 'scifi';
+
+    const url = constructSciFiURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleSciFi = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchSciFi())
+  }
+
+  fetchWar = () => {
+    this.resultsType = 'war';
+
+    const url = constructWarURL(this.state.pageNum)
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          movies: data.results,
+          totalPages: data.total_pages
+        })
+      })
+  }
+
+  handleWar = () => {
+    this.setState({ pageNum: 1 }, () => this.fetchWar())
+  }
+
  
 
   ///////////////////////////////
@@ -195,6 +356,22 @@ class App extends React.Component {
         this.fetchNowPlaying()
       } else if (this.resultsType === 'topRated') {
         this.fetchTopRated()
+      } else if (this.resultsType === 'action') {
+        this.fetchAction()
+      } else if (this.resultsType === 'adventure') {
+        this.fetchAdventure()
+      } else if (this.resultsType === 'comedy') {
+        this.fetchComedy()
+      } else if (this.resultsType === 'crime') {
+        this.fetchCrime()
+      } else if (this.resultsType === 'horror') {
+        this.fetchHorror()
+      } else if (this.resultsType === 'romance') {
+        this.fetchRomance()
+      } else if (this.resultsType === 'scifi') {
+        this.fetchSciFi()
+      } else if (this.resultsType === 'war') {
+        this.fetchWar()
       }
     })
   }
@@ -215,6 +392,22 @@ class App extends React.Component {
         this.fetchNowPlaying()
       } else if (this.resultsType === 'topRated') {
         this.fetchTopRated()
+      } else if (this.resultsType === 'action') {
+        this.fetchAction()
+      } else if (this.resultsType === 'adventure') {
+        this.fetchAdventure()
+      } else if (this.resultsType === 'comedy') {
+        this.fetchComedy()
+      } else if (this.resultsType === 'crime') {
+        this.fetchCrime()
+      } else if (this.resultsType === 'horror') {
+        this.fetchHorror()
+      } else if (this.resultsType === 'romance') {
+        this.fetchRomance() 
+      } else if (this.resultsType === 'scifi') {
+        this.fetchSciFi()
+      } else if (this.resultsType === 'war') {
+        this.fetchWar()
       }
     })
   }
@@ -265,8 +458,15 @@ class App extends React.Component {
             handleTrending={this.handleTrending}
             handleNowPlaying={this.handleNowPlaying}
             searchTerm={this.state.searchTerm}
-            fetchNowPlaying={this.fetchNowPlaying}
-            fetchTopRated={this.fetchTopRated}
+            handleTopRated={this.handleTopRated}
+            handleAction={this.handleAction}
+            handleAdventure={this.handleAdventure}
+            handleComedy={this.handleComedy}
+            handleCrime={this.handleCrime}
+            handleHorror={this.handleHorror}
+            handleRomance={this.handleRomance}
+            handleSciFi={this.handleSciFi}
+            handleWar={this.handleWar}
           /> 
           <MovieList movies={this.state.movies} movieInfo={this.movieInfo} />
         </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} /> }

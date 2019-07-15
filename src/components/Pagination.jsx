@@ -5,6 +5,8 @@ export function paginationNumber(currentPage, totalPages) {
 	let endPage;
 	let page1 = 1;
 
+
+	console.log('TOTAL NUMBER OF PAGESSSSSSSSSSSSSSSS', totalPages); 
 	if (totalPages <= 5) {
 		startPage = 1;
 		endPage = totalPages;
@@ -12,6 +14,10 @@ export function paginationNumber(currentPage, totalPages) {
 		if (currentPage <= 3) {
 			startPage = 1;
 			endPage = 5;
+		} else if (totalPages >= 999) {
+			startPage = 995;
+			endPage = 999;
+			totalPages = 999;
 		} else if (currentPage + 2 >= totalPages) {
 			startPage = totalPages - 4;
 			endPage = totalPages;
@@ -29,18 +35,24 @@ export function paginationNumber(currentPage, totalPages) {
 const Pagination = (props) => {
 	const pageLinks = [];
 
-	const totalPages = props.totalPages;
+	let totalPages = props.totalPages;
 	let currentPage = props.pageNum;
 
 
 	const pageValue = paginationNumber(currentPage, totalPages);
 	const startPage = pageValue.startPage;
-	const endPage = pageValue.endPage;
+	let endPage = pageValue.endPage;
+
+	if (totalPages >= 999) {
+		totalPages = 999
+	}
+	
 
 
 
 	console.log('Start Page:', startPage);
 	console.log('End Page:', endPage);
+	console.log('Total Pages', totalPages);
 
 
 	for(let i = startPage; i <= endPage; i++) {
@@ -49,7 +61,7 @@ const Pagination = (props) => {
 		);
 
 		console.log('This is the current page number:', currentPage)
-		console.log('THIS IS THE TOTAL NUMBER OF PAGES:', props.totalPages);
+		console.log('THIS IS THE TOTAL NUMBER OF PAGES:', totalPages);
 	}
 
 
@@ -62,7 +74,7 @@ const Pagination = (props) => {
 						<li>...</li>
 						{ pageLinks }
 						<li>...</li>
-						<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>	
+						<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#">Last Page</a></li>	
 					</ul>
 				: null
 			}
