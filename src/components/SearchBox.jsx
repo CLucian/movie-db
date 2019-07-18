@@ -20,6 +20,23 @@ class SearchBox extends Component {
 		return (
 			<div className="container-searchbox">
 				<div className="row">
+					<div className="discover">
+						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
+						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" /><span>Now Playing</span></button>
+						<button className="btn-genre" onClick={this.props.handleTopRated}><img className="icon-picture" src={stats} alt="top rated" /><span>Top Rated</span></button>
+						<button className="btn-genre" onClick={this.props.handleAction}><img className="icon-picture" src={action} alt="action" /><span>Action</span></button>
+						<button className="btn-genre" onClick={this.props.handleAdventure}><img className="icon-picture" src={adventure} alt="adventure" /><span>Adventure</span></button>
+						<button className="btn-genre" onClick={this.props.handleComedy}><img className="icon-picture" src={comedy} alt="comedy" /><span>Comedy</span></button>
+						<button className="btn-genre" onClick={this.props.handleCrime}><img className="icon-picture" src={crime} alt="crime" /><span>Crime</span></button>
+						<button className="btn-genre" onClick={this.props.handleHorror}><img className="icon-picture" src={horror} alt="horror" /><span>Horror</span></button>
+						<button className="btn-genre" onClick={this.props.handleRomance}><img className="icon-picture" src={romance} alt="romance" /><span>Romance</span></button>
+						<button className="btn-genre" onClick={this.props.handleSciFi}><img className="icon-picture" src={sciFi} alt="sciFi" /><span>Sci-Fi</span></button>
+						<button className="btn-genre" onClick={this.props.handleWar}><img className="icon-picture" src={war} alt="war" /><span>War</span></button>
+
+						{/* <button className="discover__button" type="button" onClick={props.handleTrending}>Popular Movies</button> */}
+					</div>
+				</div>
+				<div className="row row2">
 					<form action="" onSubmit={this.props.handleSubmit} className="searchForm">
 						<div className="input-field">
 							<input placeholder="Search Movie Title..." /*{`${props.searchTerm}`}*/ type="text" onChange={this.props.handleChange} className="__searchTerm" />
@@ -33,22 +50,7 @@ class SearchBox extends Component {
 						</div> */}
 
 					</form>
-					<div className="discover">
-						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
-						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" />Now Playing</button>
-						<button className="btn-genre" onClick={this.props.handleTopRated}><img className="icon-picture" src={stats} alt="top rated" />Top Rated</button>
-						<button className="btn-genre" onClick={this.props.handleAction}><img className="icon-picture" src={action} alt="action" />Action</button>
-						<button className="btn-genre" onClick={this.props.handleAdventure}><img className="icon-picture" src={adventure} alt="adventure" />Adventure</button>
-						<button className="btn-genre" onClick={this.props.handleComedy}><img className="icon-picture" src={comedy} alt="comedy"/>Comedy</button>
-						<button className="btn-genre" onClick={this.props.handleCrime}><img className="icon-picture" src={crime} alt="crime" />Crime</button>
-						<button className="btn-genre" onClick={this.props.handleHorror}><img className="icon-picture" src={horror} alt="horror" />Horror</button>
-						<button className="btn-genre" onClick={this.props.handleRomance}><img className="icon-picture" src={romance} alt="romance" />Romance</button>
-						<button className="btn-genre" onClick={this.props.handleSciFi}><img className="icon-picture" src={sciFi} alt="sciFi" />Sci-Fi</button>
-						<button className="btn-genre" onClick={this.props.handleWar}><img className="icon-picture" src={war} alt="war" />War</button>
-						
-						{/* <button className="discover__button" type="button" onClick={props.handleTrending}>Popular Movies</button> */}
-					</div>
-				</div>
+				</div>		
 			</div>
 		)
 	}

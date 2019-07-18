@@ -21,12 +21,12 @@ const MovieInfo = (props) => {
 				<div className="containerInfo">
 					<div className="containerInfo--picture">
 						{props.currentMovie.poster_path === null ? <img src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
-						<img src={`https://image.tmdb.org/t/p/w342${props.currentMovie.poster_path}`} /> }
+						<img className="movieInfo-image" src={`https://image.tmdb.org/t/p/w342${props.currentMovie.poster_path}`} /> }
 					</div>
 				
 					<div className="movieInfo">
 						<div className="container">
-							<h1>{props.currentMovie.title}</h1>
+							<h1 className="movieInfo-header">{props.currentMovie.title}</h1>
 							<p className="infoTitle">Overview:</p>
 							<p className="info">{props.currentMovie.overview}</p>
 							<p className="infoTitle">Vote Average</p>

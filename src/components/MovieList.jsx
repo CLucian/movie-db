@@ -12,7 +12,7 @@ const MovieList = (props) => {
 		)
 	console.log(movieData)
 	return(
-		<div className="movie-container" style={{ cursor: "pointer" }}>
+		<div className="movie-container">
 				{ movieData }
 		</div>
 	)
