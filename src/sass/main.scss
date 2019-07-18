@@ -136,14 +136,16 @@ html {
 //DISPLAY NONE ON DISCOVER BUTTON
 
 .discover {
-	padding: 1rem;
-	position: absolute;
-	left: 126rem;
-	top: 3.5rem;
+	// padding: 0.1rem;
+	// padding-top: 1rem;
+	margin-top: 1rem;
+	margin-left: 5rem;
+	position: static;
+	background-color: white;
+	border-radius: 0.5rem;
 
 
 	&__button {
-		padding: 0.5rem;
 		width: 10rem;
 		border-radius: 1rem;
 		font-size: 1.5rem;

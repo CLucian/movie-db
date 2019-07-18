@@ -163,15 +163,64 @@ img .backdrop--movieBackground {
 }
 
 .icon-picture {
-	width: 5rem;
-	height: auto;
+	width: 4rem;
+	// height: auto;
+	padding-top: 1rem;
 	padding-bottom: 0.5rem;
 	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.icon-picture:hover {
+	animation: shake 0.6s infinite;
+}
+@keyframes shake {
+	0%{
+		transform: translate(0rem,0rem) rotate(0deg);
+	}
+	25%{
+		transform: translate(0.1rem,0.1rem) rotate(1deg);
+	}
+	50%{
+		transform: translate(-0.1rem,-0.1rem) rotate(-1deg);
+	}
+	75%{
+		transform: translate(0.2rem,-0.1rem) rotate(2deg);
+	}
+	100%{
+		transform: translate(-0.1rem,0.1rem) rotate(-1deg);
+	}
 }
 
 .btn-genre {
-	border-radius: 50%;
-	padding: 10px;
-	background: green;
-	margin: 0.5rem;
+	border: none;
+	padding: 0.5rem;
+	margin: 0rem;
+	cursor: pointer;
 }
+
+// .btn-genre:hover {
+// 	animation: shake 0.6s infinite;
+// }
+// @keyframes shake {
+// 	0%{
+// 		transform: translate(0rem,0rem) rotate(0deg);
+// 	}
+// 	25%{
+// 		transform: translate(0.1rem,0.1rem) rotate(1deg);
+// 	}
+// 	50%{
+// 		transform: translate(-0.1rem,-0.1rem) rotate(-1deg);
+// 	}
+// 	75%{
+// 		transform: translate(0.2rem,-0.1rem) rotate(2deg);
+// 	}
+// 	100%{
+// 		transform: translate(-0.1rem,0.1rem) rotate(-1deg);
+// 	}
+// }
+
+.btn-genre:focus {
+	outline: none;
+} 

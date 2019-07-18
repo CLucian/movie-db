@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { ReactComponent as Discover } from "../img/SVG/ticket.svg";
+import { ReactComponent as Stats } from "../img/SVG/stats-dots.svg";
 import comedy from '../img/SVG/comedy.png';
 import action from '../img/SVG/Arnold.png';
 import adventure from '../img/SVG/Sheen.png';
 import crime from '../img/SVG/batman.png';
 import horror from '../img/SVG/knife.png';
+import playing from '../img/SVG/playing.png';
 import romance from '../img/SVG/rose.png';
 import sciFi from '../img/SVG/leo.png';
+import stats from '../img/SVG/stats.png'
 import war from '../img/SVG/war.png';
 
 
@@ -31,9 +34,9 @@ class SearchBox extends Component {
 
 					</form>
 					<div className="discover">
-						<Discover className="discoverbtn" onClick={this.props.handleTrending} />
-						<button className="btn-genre" onClick={this.props.handleNowPlaying}>Now Playing</button>
-						<button className="btn-genre" onClick={this.props.handleTopRated}>Top Rated</button>
+						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
+						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" />Now Playing</button>
+						<button className="btn-genre" onClick={this.props.handleTopRated}><img className="icon-picture" src={stats} alt="top rated" />Top Rated</button>
 						<button className="btn-genre" onClick={this.props.handleAction}><img className="icon-picture" src={action} alt="action" />Action</button>
 						<button className="btn-genre" onClick={this.props.handleAdventure}><img className="icon-picture" src={adventure} alt="adventure" />Adventure</button>
 						<button className="btn-genre" onClick={this.props.handleComedy}><img className="icon-picture" src={comedy} alt="comedy"/>Comedy</button>
