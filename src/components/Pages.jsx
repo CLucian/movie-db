@@ -9,7 +9,6 @@ const Pages = (props) => {
 	if (totalPages > 999) {
 		totalPages = 999
 	}
-	console.log('ASDFASDIUFHAISDHFKHSDFKHSFGKHSLFKHA', props.totalPages);
 
 	return (
 		<div>

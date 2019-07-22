@@ -6,7 +6,7 @@ export function paginationNumber(currentPage, totalPages) {
 	let page1 = 1;
 
 
-	console.log('TOTAL NUMBER OF PAGESSSSSSSSSSSSSSSS', totalPages); 
+	console.log('TOTAL NUMBER OF PAGES', totalPages); 
 	if (totalPages <= 5) {
 		startPage = 1;
 		endPage = totalPages;

@@ -20,7 +20,7 @@ const MovieInfo = (props) => {
 			<div className="row-info">
 				<div className="containerInfo">
 					<div className="containerInfo--picture">
-						{props.currentMovie.poster_path === null ? <img src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
+						{props.currentMovie.poster_path === null ? <img className="movieInfo-image no-image" src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
 						<img className="movieInfo-image" src={`https://image.tmdb.org/t/p/w342${props.currentMovie.poster_path}`} /> }
 					</div>
 				
@@ -28,7 +28,7 @@ const MovieInfo = (props) => {
 						<div className="container">
 							<h1 className="movieInfo-header">{props.currentMovie.title}</h1>
 							<p className="infoTitle">Overview:</p>
-							<p className="info">{props.currentMovie.overview}</p>
+							{ props.currentMovie.overview === "" ? <p className="info">There is no info for this movie</p> : <p className="info">{props.currentMovie.overview}</p> }
 							<p className="infoTitle">Vote Average</p>
 							<p className="info">{props.currentMovie.vote_average} / 10</p>
 							<p className="infoTitle">Release Date</p>
