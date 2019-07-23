@@ -125,11 +125,15 @@ img .backdrop--movieBackground {
 
 	&--picture img {
 		border-radius: 0.2rem;
-
+	// 	width: 34.2rem;
+	// height: 51.3rem;
 		
 	}
 }
 
+.no-image img {
+	
+}
 
  
 .container {
@@ -344,8 +348,8 @@ h1.movieInfo-header {
 		
 	}
 	
-	.no-Image {
-		justify-content: center;
+	.no-Image img {
+		width: 100%;
 	}
 
 	.movieInfo-image {

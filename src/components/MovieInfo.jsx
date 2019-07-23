@@ -10,7 +10,7 @@ const MovieInfo = (props) => {
 	return (
 		<div className="movieInfo-container">
 			<div className="backdrop">
-				<img className="backdrop--movieBackground" src={`https://image.tmdb.org/t/p/original${props.currentMovie.backdrop_path}`} />
+				{ props.currentMovie.poster_path === null ? null : <img className="backdrop--movieBackground" src={`https://image.tmdb.org/t/p/original${props.currentMovie.backdrop_path}`} /> }
 			</div>
 			<div className="goback" onClick={props.closeMovieInfo}>
 				<div className="exit">
