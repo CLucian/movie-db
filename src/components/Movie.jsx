@@ -5,12 +5,12 @@ import React from 'react';
 
 const Movie = (props) => {
 
-	const { title, id, poster_path, release_date, vote_average } = props.movie
+	const { title, id, poster_path, release_date } = props.movie
 	
 	return(
 			<div className="movie-card">
 				<div>
-					<div onClick={() => props.movieInfo(id)}>
+					<div onClick={() => props.setMovieInfo(id)}>
 						{poster_path == null ?
 							<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
 							:
@@ -21,7 +21,7 @@ const Movie = (props) => {
 
 				</div>
 			</div>
-	)
+		)
 }
 
 export default Movie;

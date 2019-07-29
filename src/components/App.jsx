@@ -247,7 +247,7 @@ class App extends React.Component {
   // MOVIE OVERVIEW
   ///////////////////////////////
 
-  movieInfo = (id) => {
+  setMovieInfo = (id) => {
     const filteredMovie = this.state.movies.filter(movie => movie.id === id)
     const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
 
@@ -299,7 +299,7 @@ class App extends React.Component {
             handleSciFi={this.handleSciFi}
             handleWar={this.handleWar}
           /> 
-          <MovieList movies={this.state.movies} movieInfo={this.movieInfo} />
+          <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} />
         </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} /> }
 
 
