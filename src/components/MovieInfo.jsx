@@ -30,7 +30,7 @@ const MovieInfo = (props) => {
 							<p className="infoTitle">Overview:</p>
 							{ props.currentMovie.overview === "" ? <p className="info">There is no info for this movie</p> : <p className="info">{props.currentMovie.overview}</p> }
 							<p className="infoTitle">Vote Average</p>
-							<p className="info">{props.currentMovie.vote_average} / 10</p>
+							{props.currentMovie.vote_average > 0 && <p className="info">{props.currentMovie.vote_average} / 10</p>}
 							<p className="infoTitle">Release Date</p>
 							<p className="info">{props.currentMovie.release_date.substring(5).split("-").concat(props.currentMovie.release_date.substring(0, 4)).join("/")}</p>
 						</div>
