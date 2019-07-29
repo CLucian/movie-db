@@ -1,39 +1,25 @@
 import React from 'react';
 
 
+
+
 const Movie = (props) => {
+
+	const { title, id, poster_path, release_date, vote_average } = props.movie
 	
-	let pop = props.popIndex;
-	let popularity;
-	// console.log(pop)
-	if (pop < 0.00001) {
-		popularity = null;
-	} else {
-
-		popularity = 
-			<div>
-
-				{
-					props.posterImage == null ? 
-	
-					<div onClick={() => props.movieInfo(props.movieId)}>
-							<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
-							<h1 className="movieHeader">{props.movieTitle}</h1>
-						</div> 
-
-						:
-						<div onClick={() => props.movieInfo(props.movieId)}>
-							<img src={`https://image.tmdb.org/t/p/w185${props.posterImage}`} className="movie-thumbnail" alt="card" />
-							<h1 className="movieHeader">{props.movieTitle}</h1>
-						</div>
-				}
-
-			</div>
-	}
-
 	return(
 			<div className="movie-card">
-					{popularity}
+				<div>
+					<div onClick={() => props.movieInfo(id)}>
+						{poster_path == null ?
+							<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
+							:
+							<img src={`https://image.tmdb.org/t/p/w185${poster_path}`} className="movie-thumbnail" alt="card" />
+						}
+						<h1 className="movieHeader">{title} <br/> ({release_date.slice(0, 4)})</h1>
+					</div>
+
+				</div>
 			</div>
 	)
 }

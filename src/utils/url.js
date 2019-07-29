@@ -13,7 +13,7 @@ export function getCategoryURL(type, page){
 		case 'trending':
 			return `${BASE}/trending/movie/week?api_key=${API_KEY}&page=${page}`
 		case 'nowPlaying':
-			return `${BASE}/trending/movie/week?api_key=${API_KEY}&page=${page}`
+			return `${BASE}/movie/now_playing?api_key=${API_KEY}&page=${page}`
 		case 'topRated':
 			return `${BASE}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
 		default:
@@ -26,17 +26,17 @@ export function constructSearchURL(term, page) {
 	return `${BASE}/search/movie?api_key=${API_KEY}&query=${term}&page=${page}`
 }
 
-export function constructTrendingURL(page) {
-	return `${BASE}/trending/movie/week?api_key=${API_KEY}&page=${page}`
-}
+// export function constructTrendingURL(page) {
+// 	return `${BASE}/trending/movie/week?api_key=${API_KEY}&page=${page}`
+// }
 
-export function constructNowPlayingURL(page) {
-	return `${BASE}/movie/now_playing?api_key=${API_KEY}&page=${page}`
-}
+// export function constructNowPlayingURL(page) {
+// 	return `${BASE}/movie/now_playing?api_key=${API_KEY}&page=${page}`
+// }
 
-export function constructTopRatedURL(page) {
-	return `${BASE}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
-}
+// export function constructTopRatedURL(page) {
+// 	return `${BASE}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+// }
 
 // `${BASE}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=1990-01-01&primary_release_date.lte=1999-12-31&vote_average.gte=6&with_genres=28
 

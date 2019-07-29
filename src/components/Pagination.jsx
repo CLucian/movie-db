@@ -50,9 +50,9 @@ const Pagination = (props) => {
 
 
 
-	console.log('Start Page:', startPage);
-	console.log('End Page:', endPage);
-	console.log('Total Pages', totalPages);
+	// console.log('Start Page:', startPage);
+	// console.log('End Page:', endPage);
+	// console.log('Total Pages', totalPages);
 
 
 	for(let i = startPage; i <= endPage; i++) {
@@ -60,8 +60,8 @@ const Pagination = (props) => {
 			<li key={i + 'z'} style={{textDecoration: currentPage === i ? 'underline': 'none', pointerEvents: currentPage === i ? 'none': ''}} onClick={() => props.pagination(i)}><a href="#">{i}</a></li>
 		);
 
-		console.log('This is the current page number:', currentPage)
-		console.log('THIS IS THE TOTAL NUMBER OF PAGES:', totalPages);
+		// console.log('This is the current page number:', currentPage)
+		// console.log('THIS IS THE TOTAL NUMBER OF PAGES:', totalPages);
 	}
 
 
