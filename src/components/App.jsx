@@ -20,7 +20,8 @@ import '../sass/main.scss';
 import {
   getCategoryURL,
   constructSearchURL,
-  constructGenreURL
+  constructGenreURL,
+  constructMovieIdURL
 } from '../utils/url'
  
 import {
@@ -45,6 +46,7 @@ class App extends React.Component {
     this.state = {
       isLoaded: true,
       movies: [],
+      movie: null,
       searchTerm: '',
       totalPages: null,
       totalResults: 0,
@@ -248,12 +250,56 @@ class App extends React.Component {
   ///////////////////////////////
 
   setMovieInfo = (id) => {
-    const filteredMovie = this.state.movies.filter(movie => movie.id === id)
-    const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
+    // const filteredMovie = this.state.movies.filter(movie => movie.id === id)
+    // const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
 
-    this.setState({ currentMovie: newCurrentMovie })
-
+    // this.setState({ currentMovie: newCurrentMovie })
+    this.fetchMovieId(id)
   }
+
+  fetchMovieId = (id) => {
+    const url = constructMovieIdURL(id)
+    
+
+    fetch(url)
+      .then(res => {
+        if (!res.ok){
+          throw res
+          // throw new Error('uh oh!')
+        }
+        return res.json()
+      })
+      .then(resp => {
+        this.setState({ movie: resp })
+      })
+      .catch(err => {
+        console.log(err)
+        return alert('There was an error loading the movie')
+          // this.setState({ customError: 'Something went wrong!'})
+      })
+  }
+
+
+  fetchMovies = (search) => {
+    this.resultsType = 'search';
+
+    const url = constructSearchURL(search, this.state.pageNum)
+    fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        if (json.results) {
+          this.setState({
+            movies: json.results,
+            totalPages: json.total_pages
+          })
+        }
+        else {
+          this.setState({ movies: [] });
+        }
+      })
+      .catch((err) => console.log('PARSING FAILURE', err));
+  }
+
 
   closeMovieInfo = () => {
     this.setState({ currentMovie: null })
@@ -277,30 +323,43 @@ class App extends React.Component {
       return <div>LOADING...</div>
     }
 
+
+
     // const numberPages = Math.floor(this.state.totalResults / 20);
 
     return (
       <div className="App">
-        {this.state.currentMovie === null ? 
-        <div>
-          <SearchBox
-            // handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange}
-            handleTrending={this.handleTrending}
-            handleNowPlaying={this.handleNowPlaying}
-            searchTerm={this.state.searchTerm}
-            handleTopRated={this.handleTopRated}
-            handleAction={this.handleAction}
-            handleAdventure={this.handleAdventure}
-            handleComedy={this.handleComedy}
-            handleCrime={this.handleCrime}
-            handleHorror={this.handleHorror}
-            handleRomance={this.handleRomance}
-            handleSciFi={this.handleSciFi}
-            handleWar={this.handleWar}
-          /> 
-          <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} />
-        </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} /> }
+        {/* example error handling */}
+        {/* this.state.customError && <div>
+            Error!
+            <br/>
+            {this.state.customError}
+            <button onClick={() => this.setState({customError: null})}>Close</button>
+        </div> */}
+
+        {this.state.movie === null ? 
+          <div>
+            <SearchBox
+              // handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              handleTrending={this.handleTrending}
+              handleNowPlaying={this.handleNowPlaying}
+              searchTerm={this.state.searchTerm}
+              handleTopRated={this.handleTopRated}
+              handleAction={this.handleAction}
+              handleAdventure={this.handleAdventure}
+              handleComedy={this.handleComedy}
+              handleCrime={this.handleCrime}
+              handleHorror={this.handleHorror}
+              handleRomance={this.handleRomance}
+              handleSciFi={this.handleSciFi}
+              handleWar={this.handleWar}
+            /> 
+            <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} />
+          </div>
+          :
+          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.movie} />
+        }
 
 
         { this.state.totalPages > 1 && this.state.currentMovie === null ? 
