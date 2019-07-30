@@ -11,6 +11,10 @@
 @import "components/queries";
 
 
+.some-class {
+	height: 100vh;
+	overflow-y: scroll;
+}
 
 *,
 *:after,

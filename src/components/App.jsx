@@ -328,7 +328,7 @@ class App extends React.Component {
     // const numberPages = Math.floor(this.state.totalResults / 20);
 
     return (
-      <div className="App">
+      <div className={`App ${this.state.movie && 'some-class'}`}>
         {/* example error handling */}
         {/* this.state.customError && <div>
             Error!
