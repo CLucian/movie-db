@@ -160,6 +160,11 @@ img .backdrop--movieBackground {
 	z-index: 10;
 }
 
+.exit-svg:hover {
+	transition: 0.3s;
+	transform: rotate(90deg);
+}
+
 .discoverbtn {
 	padding-top: 1.3rem;
 	fill: #00FC87;

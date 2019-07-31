@@ -49,9 +49,7 @@ const MovieInfo = (props) => {
 				</div>
 			</div> */}
 			</div>
-			{/* <div className="similarMovies"> */}
 				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
-			{/* </div> */}
 		</div>
 	)
 }
