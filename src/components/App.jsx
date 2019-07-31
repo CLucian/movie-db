@@ -21,7 +21,8 @@ import {
   getCategoryURL,
   constructSearchURL,
   constructGenreURL,
-  constructMovieIdURL
+  constructMovieIdURL,
+  constructSimilarMovieIdURL
 } from '../utils/url'
  
 import {
@@ -54,7 +55,8 @@ class App extends React.Component {
       trendingPage: 1,
       pageLinkNum: 1,
       popIndex: 5,
-      currentMovie: null
+      currentMovie: null,
+      similarMovies: []
     }
 
     // GENRE
@@ -259,51 +261,43 @@ class App extends React.Component {
 
   fetchMovieId = (id) => {
     const url = constructMovieIdURL(id)
-    
 
-    fetch(url)
-      .then(res => {
-        if (!res.ok){
-          throw res
-          // throw new Error('uh oh!')
-        }
-        return res.json()
-      })
-      .then(resp => {
-        this.setState({ movie: resp })
-      })
-      .catch(err => {
-        console.log(err)
-        return alert('There was an error loading the movie')
-          // this.setState({ customError: 'Something went wrong!'})
-      })
-  }
-
-
-  fetchMovies = (search) => {
-    this.resultsType = 'search';
-
-    const url = constructSearchURL(search, this.state.pageNum)
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        if (json.results) {
-          this.setState({
-            movies: json.results,
-            totalPages: json.total_pages
-          })
-        }
-        else {
-          this.setState({ movies: [] });
-        }
+        console.log(json)
+        this.setState({
+          movie: json
+        })
       })
-      .catch((err) => console.log('PARSING FAILURE', err));
   }
-
 
   closeMovieInfo = () => {
-    this.setState({ currentMovie: null })
+    this.setState({ movie: null })
   }
+
+  fetchSimilarMovieId = (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=6b81323b3985de25250ad91d5c48d5b2`
+
+    fetch(url)
+    .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        this.setState({
+          similarMovies: json.results
+        })
+      })
+  }
+
+  setSimilarMovieInfo = (id) => {
+    this.fetchSimilarMovieId(id)
+  }
+ 
+
+
+
+
+
 
 
 
@@ -355,10 +349,10 @@ class App extends React.Component {
               handleSciFi={this.handleSciFi}
               handleWar={this.handleWar}
             /> 
-            <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} />
+            <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
           </div>
           :
-          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.movie} />
+          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.movie}  setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
         }
 
 

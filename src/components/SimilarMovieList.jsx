@@ -1,22 +1,22 @@
 import React from 'react';
-import Movie from './Movie';
+import SimilarMovie from './SimilarMovie';
 
-const MovieList = (props) => {
-	return(
+const SimilarMovieList = (props) => {
+	return (
 		<div className="movie-container">
-			{props.movies
+			{props.similarMovies
 				.map((movie) =>
-					<Movie
+					<SimilarMovie
 						key={movie.id}
 						movie={movie}
 						setMovieInfo={props.setMovieInfo}
 						setSimilarMovieInfo={props.setSimilarMovieInfo}
 					/>
-			)}
+				)}
 		</div>
 	)
 }
 
-export default MovieList;
+export default SimilarMovieList;
 
 

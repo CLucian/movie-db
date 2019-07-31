@@ -4,6 +4,7 @@ import { ReactComponent as Instagram } from "../img/SVG/instagram.svg";
 import { ReactComponent as Twitter } from "../img/SVG/twitter.svg";
 import { ReactComponent as Github } from "../img/SVG/github.svg";
 import { ReactComponent as Exit } from "../img/SVG/cross.svg";
+import SimilarMovieList from './SimilarMovieList';
 
 
 const MovieInfo = (props) => {
@@ -47,6 +48,9 @@ const MovieInfo = (props) => {
 					<a href="https://github.com/CLucian"><Github className="svg" /></a>
 				</div>
 			</div> */}
+			</div>
+			<div className="similarMovies">
+				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
 			</div>
 		</div>
 	)

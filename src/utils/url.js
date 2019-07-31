@@ -32,6 +32,7 @@ export function constructMovieIdURL(id) {
 }
 
 
+
 // GENRE SEARCHES
 
 const GENRES = {
