@@ -31,7 +31,9 @@ export function constructMovieIdURL(id) {
 	return `${BASE}/movie/${id}?api_key=${API_KEY}`
 }
 
-
+export function constructSimilarMovieIdURL(id) {
+	return `${BASE}/movie/${id}/similar?api_key=${API_KEY}`
+}
 
 // GENRE SEARCHES
 

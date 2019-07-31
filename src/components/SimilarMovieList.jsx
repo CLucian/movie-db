@@ -3,8 +3,9 @@ import SimilarMovie from './SimilarMovie';
 
 const SimilarMovieList = (props) => {
 	return (
-		<div className="movie-container">
+		<div className="similar-movie-container ">
 			{props.similarMovies
+				.slice(0, 5)
 				.map((movie) =>
 					<SimilarMovie
 						key={movie.id}
