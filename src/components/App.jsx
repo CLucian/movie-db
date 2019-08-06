@@ -144,9 +144,10 @@ class App extends React.Component {
   ///////////////////////////////
   // API FETCHING
   ///////////////////////////////
+  
 
   fetchMovies = (search) => {
-    this.resultsType = 'search';
+    this.resultsType = search;
 
     const url = constructSearchURL(search, this.state.pageNum)
     fetch(url)
@@ -171,6 +172,14 @@ class App extends React.Component {
     // Took out pageNum: 1  in the state
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ pageNum: 1 }, () => {
+      this.fetchMovies(this.state.searchTerm);
+    });
+  }
+
+
 // This doesn't work properly
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -186,13 +195,6 @@ class App extends React.Component {
   //     this.fetchMovies(this.state.searchTerm);
   //   });
   //   }
-  // }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.setState({ pageNum: 1 }, () => {
-  //     this.fetchMovies(this.state.searchTerm);
-  //   });
   // }
   
 
@@ -232,7 +234,7 @@ class App extends React.Component {
     } else if (isCategory(this.resultsType)) {
       this.fetchCategory(this.resultsType)
     } else {
-      this.fetchMovies(this.state.search)
+      this.fetchMovies(this.resultsType)
     }
   }
 
@@ -249,7 +251,7 @@ class App extends React.Component {
 
   ///////////////////////////////
   // MOVIE OVERVIEW
-  ///////////////////////////////
+  ///////////////////////////////x
 
   setMovieInfo = (id) => {
     // const filteredMovie = this.state.movies.filter(movie => movie.id === id)
@@ -297,19 +299,6 @@ class App extends React.Component {
  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   ///////////////////////////////
   // RENDER
   ///////////////////////////////
@@ -336,7 +325,7 @@ class App extends React.Component {
         {this.state.movie === null ? 
           <div>
             <SearchBox
-              // handleSubmit={this.handleSubmit}
+              handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               handleTrending={this.handleTrending}
               handleNowPlaying={this.handleNowPlaying}

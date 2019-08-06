@@ -11,6 +11,8 @@ const MovieInfo = (props) => {
 
 	const { poster_path, backdrop_path, overview, vote_average, release_date, title } = props.currentMovie
 
+	console.log('ADSGFADFHGADFGAEFGASDFGFGFFGFGFGFGF', props.similarMovies)
+
 	return (
 		<div className="movieInfo-container">
 			<div className="backdrop">
@@ -49,7 +51,7 @@ const MovieInfo = (props) => {
 				</div>
 			</div> */}
 			</div>
-				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
+			<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
 		</div>
 	)
 }

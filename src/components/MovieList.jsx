@@ -2,6 +2,8 @@ import React from 'react';
 import Movie from './Movie';
 
 const MovieList = (props) => {
+
+	console.log('PROPS DOT MOVIES',props.movies)
 	return(
 		<div className="movie-container">
 			{props.movies
@@ -10,7 +12,7 @@ const MovieList = (props) => {
 						key={movie.id}
 						movie={movie}
 						setMovieInfo={props.setMovieInfo}
-						setSimilarMovieInfo={props.setSimilarMovieInfo}
+						setSimilarMovieInfo={props.setSimilarMovieInfo} 
 					/>
 			)}
 		</div>
