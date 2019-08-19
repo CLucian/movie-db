@@ -14,10 +14,10 @@ export function paginationNumber(currentPage, totalPages) {
 		if (currentPage <= 3) {
 			startPage = 1;
 			endPage = 5;
-		} else if (totalPages >= 999) {
-			startPage = 995;
-			endPage = 999;
-			totalPages = 999;
+		} else if (currentPage >= 499) {
+			startPage = 495;
+			endPage = 499;
+			totalPages = 499;
 		} else if (currentPage + 2 >= totalPages) {
 			startPage = totalPages - 4;
 			endPage = totalPages;
@@ -43,8 +43,8 @@ const Pagination = (props) => {
 	const startPage = pageValue.startPage;
 	let endPage = pageValue.endPage;
 
-	if (totalPages >= 999) {
-		totalPages = 999
+	if (totalPages >= 499) {
+		totalPages = 499
 	}
 	
 

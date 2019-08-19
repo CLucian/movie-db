@@ -5,6 +5,7 @@ import { ReactComponent as Twitter } from "../img/SVG/twitter.svg";
 import { ReactComponent as Github } from "../img/SVG/github.svg";
 import { ReactComponent as Exit } from "../img/SVG/cross.svg";
 import SimilarMovieList from './SimilarMovieList';
+import StarRatings from './StarRatings';
 
 
 const MovieInfo = (props) => {
@@ -12,7 +13,7 @@ const MovieInfo = (props) => {
 	const { poster_path, backdrop_path, overview, vote_average, release_date, title } = props.currentMovie
 
 	console.log('ADSGFADFHGADFGAEFGASDFGFGFFGFGFGFGF', props.similarMovies)
-
+	console.log('asdfiuahsdfoiahsdoifhaiosdhfiahdf', props.currentMovie)
 	return (
 		<div className="movieInfo-container">
 			<div className="backdrop">
@@ -27,11 +28,12 @@ const MovieInfo = (props) => {
 				<div className="containerInfo">
 					<div className="containerInfo--picture">
 						{poster_path == null ? <img className="movieInfo-image no-image" src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
-						<img className="movieInfo-image" src={`https://image.tmdb.org/t/p/w342${poster_path}`} /> }
+						<img className="movieInfo-image" src={`https://image.tmdb.org/t/p/w500${poster_path}`} /> }
 					</div>
 				
 					<div className="movieInfo">
 						<div className="container">
+							<StarRatings rating={vote_average} />
 							<h1 className="movieInfo-header">{title}</h1>
 							<p className="infoTitle">Overview:</p>
 							{ overview === "" ? <p className="info">There is no info for this movie</p> : <p className="info">{overview}</p> }
@@ -42,16 +44,9 @@ const MovieInfo = (props) => {
 						</div>
 					</div>
 				</div>
-			{/* <div className="developer">
-				<p className="developer--text">Designed and Developed by Lucian Covic</p>
-				<div className="developer--svgs">
-					<a href="https://www.instagram.com/looseein_c/"><Instagram className="svg" /></a>
-					<a href="https://www.twitter.com/"><Twitter className="svg" /></a>
-					<a href="https://github.com/CLucian"><Github className="svg" /></a>
-				</div>
-			</div> */}
+				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
 			</div>
-			<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
+			{/* <SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} /> */}
 		</div>
 	)
 }

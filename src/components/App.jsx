@@ -8,6 +8,7 @@ import Pagination from './Pagination';
 import Pages from './Pages';
 import SearchBox from './SearchBox';
 import MovieInfo from './MovieInfo';
+import StarRatings from './StarRatings';
 // import Movie from './Movie';
 
 
@@ -56,7 +57,8 @@ class App extends React.Component {
       pageLinkNum: 1,
       popIndex: 5,
       currentMovie: null,
-      similarMovies: []
+      similarMovies: [],
+      movieTrailer: []
     }
 
     // GENRE
@@ -297,6 +299,25 @@ class App extends React.Component {
     this.fetchSimilarMovieId(id)
   }
  
+  // fetchMovieTrailer = (id) => {
+  //   const url = 'https://api.themoviedb.org/3/movie/${id}/videos?api_key=6b81323b3985de25250ad91d5c48d5b2';
+
+
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       console.log(json)
+  //       this.setState({
+  //         movieTrailer: json.results
+  //       })
+  //     })
+  // }
+
+  // setMovieTrailer = (id) => {
+  //   this.fetchMovieTrailer(id)
+  // }
+
+
 
 
   ///////////////////////////////
@@ -340,14 +361,14 @@ class App extends React.Component {
               handleSciFi={this.handleSciFi}
               handleWar={this.handleWar}
             /> 
-            <MovieList movies={this.state.movies} setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
+            <MovieList  movies={this.state.movies} setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
           </div>
           :
-          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.movie}  setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
+          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.movie} setMovieInfo={this.setMovieInfo} similarMovies={this.state.similarMovies} setSimilarMovieInfo={this.setSimilarMovieInfo} />
         }
 
 
-        { this.state.totalPages > 1 && this.state.currentMovie === null ? 
+        { this.state.totalPages > 1 && this.state.movie === null ? 
           <Pagination 
             movies={this.state.movies} 
             totalPages={this.state.totalPages} 
@@ -355,7 +376,7 @@ class App extends React.Component {
             pageNum={this.state.pageNum} />
            : '' }
 
-        { this.state.totalPages > 1 && this.state.currentMovie === null ?
+        { this.state.totalPages > 1 && this.state.movie === null ?
           <Pages
             nextPage={this.nextPage}
             prevPage={this.prevPage}

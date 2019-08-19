@@ -6,8 +6,8 @@ const Pages = (props) => {
 
 	let totalPages = props.totalPages
 
-	if (totalPages > 999) {
-		totalPages = 999
+	if (totalPages > 499) {
+		totalPages = 499
 	}
 
 	return (

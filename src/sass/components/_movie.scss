@@ -83,7 +83,16 @@ img .movie-thumbnail {
 	margin-bottom: 6rem;
 }
 
+// .similar-movie-card:hover {
+// 	transform: scale(0.8);
+// 	transition-duration: 0.5s;
 
+// }
+
+.movie-thumbnail:hover {
+	transform: scale(0.85);
+	transition-duration: 0.5s;
+}
 
 
 // flex-direct: row, row-reverse, column-reverse
