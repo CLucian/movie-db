@@ -35,6 +35,13 @@ export function constructSimilarMovieIdURL(id) {
 	return `${BASE}/movie/${id}/similar?api_key=${API_KEY}`
 }
 
+
+//THIS WILL GET ALL THE DETAILS NEEDED
+
+
+
+
+
 // https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=6b81323b3985de25250ad91d5c48d5b2
 
 // GENRE SEARCHES
@@ -67,6 +74,8 @@ export function constructGenreURL(type, page){
 
 	return `${BASE}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&vote_average.gte=6&with_genres=${genre}&page=${page}`
 }
+
+
 
 
 // export function constructActionURL(page) {

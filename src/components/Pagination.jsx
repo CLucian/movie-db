@@ -57,7 +57,7 @@ const Pagination = (props) => {
 
 	for(let i = startPage; i <= endPage; i++) {
 		pageLinks.push(
-			<li key={i + 'z'} style={{textDecoration: currentPage === i ? 'underline': 'none', pointerEvents: currentPage === i ? 'none': ''}} onClick={() => props.pagination(i)}><a href="#">{i}</a></li>
+			<li key={i + 'z'} className="pageNumbers" style={{textDecoration: currentPage === i ? 'underline': 'none', pointerEvents: currentPage === i ? 'none': '' }} onClick={() => props.pagination(i)}><a href="#top">{i}</a></li>
 		);
 
 		// console.log('This is the current page number:', currentPage)
@@ -70,11 +70,11 @@ const Pagination = (props) => {
 			{
 				props.totalPages >= 1 ?
 					<ul className="pagination-links">
-						<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
+						<li className="pageNumbers" style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#top">First Page</a></li>
 						<li>...</li>
-						{ pageLinks }
+						{pageLinks}
 						<li>...</li>
-						<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#">Last Page</a></li>	
+						<li className="pageNumbers" style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#top">Last Page</a></li>	
 					</ul>
 				: null
 			}

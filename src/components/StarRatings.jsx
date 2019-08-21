@@ -26,11 +26,6 @@ const StarRatings = (props) => {
 
 	return(
 		<div>
-			{props.rating}
-			<br></br>
-			{getRating(props.rating)}
-			<br/>
-			{getStarPercentage(props.rating)}
 			<div class="rating-star">
 				<span className="fa fa-star"></span>
 				<span className="fa fa-star"></span>
@@ -45,6 +40,17 @@ const StarRatings = (props) => {
 					<span className="fa fa-star full"></span>
 				</span>
 			</div>
+			<span className="ratingNumber">{props.rating}
+				<span className="totalRating">
+					/10 
+				</span>
+			</span>
+			<div>
+				<span className="totalRating" style={{fontSize: '1rem'}}>
+					Total Votes: {props.votes}
+				</span>
+			</div>
+			
 		</div>
 	)
 }

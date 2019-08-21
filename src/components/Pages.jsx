@@ -15,8 +15,8 @@ const Pages = (props) => {
 			{
 				props.totalPages >= 1 ?
 					<div className="directional-buttons">
-						<button className="prevPage dirButtons" onClick={props.prevPage} style={{ pointerEvents: props.pageNum > 1 ? '' : 'none' }}>&#8249;</button> 
-						<button className="nextPage dirButtons" onClick={props.nextPage} style={{ pointerEvents: props.pageNum < totalPages ? '' : 'none' }}>&#8250;</button>
+						{/* <button className="prevPage dirButtons pageNumbers" onClick={props.prevPage} style={{ pointerEvents: props.pageNum > 1 ? '' : 'none' }}>&#8249;</button> 
+						<button className="nextPage dirButtons pageNumbers" onClick={props.nextPage} style={{ pointerEvents: props.pageNum < totalPages ? '' : 'none' }}>&#8250;</button> */}
 					</div> 
 				: null
 			}

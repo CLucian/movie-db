@@ -94,7 +94,15 @@ img .movie-thumbnail {
 	transition-duration: 0.5s;
 }
 
+.pageNumbers:hover {
+	transform: scale(1.5);
+	transition-duration: 0.1s;
+}
 
+// .pagination-links:hover {
+// 	transform: scale(1.5);
+// 	transition-duration: 0.1s;
+// }
 // flex-direct: row, row-reverse, column-reverse
 // justify-content: center, space-between, space-around, space-evenly, flex-end (default)
 // align-items: center, flex-start, flex-end, stretch, baseline, 
