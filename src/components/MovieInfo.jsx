@@ -11,7 +11,7 @@ import { spawn } from 'child_process';
 
 const MovieInfo = (props) => {
 
-	const { poster_path, backdrop_path, overview, vote_average, release_date, title, genres, homepage, production_companies, vote_count, imdb_id } = props.currentMovie
+	const { poster_path, backdrop_path, overview, vote_average, release_date, title, genres, homepage, production_companies, vote_count, imdb_id, tagline, runtime, revenue } = props.currentMovie
 
 	console.log('ADSGFADFHGADFGAEFGASDFGFGFFGFGFGFGF', props.similarMovies)
 	console.log('asdfiuahsdfoiahsdoifhaiosdhfiahdf', props.currentMovie)
@@ -26,7 +26,7 @@ const MovieInfo = (props) => {
 				</div>
 			</div>
 			<div className="row-info">
-				<div className="containerInfo">
+				<div className="containerInfo">  
 					<div className="containerInfo--picture">
 						{poster_path == null ? <img className="movieInfo-image no-image" src={"https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"}/> :
 						<img className="movieInfo-image" src={`https://image.tmdb.org/t/p/w500${poster_path}`} /> }
@@ -36,17 +36,31 @@ const MovieInfo = (props) => {
 						<div className="container">
 							<StarRatings rating={vote_average} votes={vote_count} />
 							<h1 className="movieInfo-header">{title}</h1>
+							{ tagline === "" ? null : <p className="tagline">"{tagline}"</p> }
+							<p className="infoTitle movie-link"><a className="homepage-link" href={homepage}>Movie home page</a></p>
+							{/* { {homepage} ? <a className="homepage-link info" href={homepage}>Homepage</a> : null } */}
 							<p className="infoTitle">Genres:</p>
 							<p className="info">{ genres.map(genre => genre.name).join(', ') }</p>
 							<p className="infoTitle">Overview:</p>
 							{ overview === "" ? <p className="info">There is no info for this movie</p> : <p className="info">{overview}</p> }
-							<p className="infoTitle">Vote Average</p>
-							<p className="infoTitle">Release Date</p>
-							<p className="info">{release_date.substring(5).split("-").concat(release_date.substring(0, 4)).join("/")}</p>
 							<p className="infoTitle">Production Companies:</p><p className="info">{production_companies.map(company => company.name).join(', ')}</p>
-							<div className="production-imgs-container">{production_companies.map(img => img.logo_path && <img className="production-imgs" src={`https://image.tmdb.org/t/p/w92${img.logo_path}`} />) }</div>
+							{/* <div className="production-imgs-container">{production_companies.map(img => img.logo_path && <div className="production-image-div"><img className="production-imgs" src={`https://image.tmdb.org/t/p/w92${img.logo_path}`} /></div>) }</div> */}
+							<div className="misc-details">
+								<div className="misc">
+									<p className="infoTitle">Run Time</p>
+									<p className="info">{runtime} minutes</p>
+								</div>
+								<div className="misc">
+									<p className="infoTitle">Revenue</p>
+									<p className="info">${revenue}</p>
+								</div>
+								<div className="misc">
+									<p className="infoTitle">Release Date</p>
+									<p className="info">{release_date.substring(5).split("-").concat(release_date.substring(0, 4)).join("/")}</p>
+								</div>
+							</div>
 							<a href={`https://www.imdb.com/title/${imdb_id}/`}><p className="info anchor">Additional Information</p></a>
-						</div>
+						</div> 
 					</div>
 				</div>
 				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />

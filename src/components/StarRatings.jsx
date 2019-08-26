@@ -46,7 +46,7 @@ const StarRatings = (props) => {
 				</span>
 			</span>
 			<div>
-				<span className="totalRating" style={{fontSize: '1rem'}}>
+				<span className="totalRating votes" style={{fontSize: '1rem'}}>
 					Total Votes: {props.votes}
 				</span>
 			</div>

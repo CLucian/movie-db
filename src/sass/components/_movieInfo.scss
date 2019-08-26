@@ -12,6 +12,14 @@ h1.movieInfo-header {
 		font-size: 3rem;
 	}
 
+.tagline {
+	font-style: italic;
+	font-weight: 100;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+
 .row-info {
 	padding-top: 2rem;
 	position: relative;
@@ -30,19 +38,35 @@ h1.movieInfo-header {
 	font-size: 1.7rem;
 	font-family: Raleway;
 	font-weight: 300;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 	color: white;
 
 }
 
 .infoTitle {
 	margin-bottom: 0.5rem;
-	color: #00FC87
+	color: #6495ED;
 }
 
-// .row {
-// 	height: 100%;
-// }
+.homepage-link {
+	text-decoration: none;
+	color: #6495ED;
+}
+
+.movie-link {
+	margin-bottom: 2rem;	
+	text-align: center;
+}
+
+.misc-details {
+	margin: 2rem 2rem;
+	display: flex;
+	justify-content: space-evenly;	
+}
+
+.misc {
+	display: block;
+}
 
 .developer {
 	z-index: 99;
@@ -80,7 +104,7 @@ h1.movieInfo-header {
 	font-family: "Oswald", sans-serif;
 	font-weight: 300;
 	font-size: 5rem;
-	margin-bottom: 2rem;
+	margin-bottom: 0.5rem;
 	margin-top: 0.5rem;
 	color: white;
 }
@@ -535,11 +559,11 @@ img .backdrop--movieBackground {
 
 
 .fa-star {
-	font-size: 5rem;
+	font-size: 4rem;
 }
 
 .full {
-  color: #00FC87;
+  color: #f2b01e;
 }
 
 .rating-star {
@@ -558,18 +582,22 @@ img .backdrop--movieBackground {
 
 .ratingNumber {
 	float: right;
-	vertical-align: middle;
-	font-size: 4rem;
+	vertical-align: bottom;
+	font-size: 3rem;
+	color: #6495ED;
 }
 
 .totalRating {
-	float:right;
+	// float:right;
 	vertical-align: bottom;
 	position: relative;
 	font-size: 1.5rem;
 	color: #AAAAAA
 }
 
+.votes {
+	float: right;
+}
 
 a {
 	text-decoration: none;
@@ -587,10 +615,12 @@ a {
 	text-align: center;
 	vertical-align: center;
 	border-radius: 0.5rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 2rem;
 }
 
 .production-imgs {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+	// display: inline;	
 }
