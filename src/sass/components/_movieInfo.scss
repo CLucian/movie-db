@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 
 .movieInfo-container {
 	height: 100%;
@@ -51,6 +55,11 @@ h1.movieInfo-header {
 .homepage-link {
 	text-decoration: none;
 	color: #6495ED;
+}
+
+.movie-link:hover {
+	transform: scale(1.15);
+	transition-duration: 0.1s;
 }
 
 .movie-link {
@@ -623,4 +632,13 @@ a {
 
 .production-imgs {
 	// display: inline;	
+}
+
+.back-to-top {
+	display: flex;
+	justify-content: center;
+	font-size: 2rem;
+	margin-top: 0.5rem;
+	margin-left: 4rem;
+	scroll-behavior: smooth;
 }

@@ -75,6 +75,9 @@ const Pagination = (props) => {
 						{pageLinks}
 						<li>...</li>
 						<li className="pageNumbers" style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#top">Last Page</a></li>	
+						<a href="#" className="back-to-top">
+							<span className="fa fa-arrow-up"></span>
+						</a>
 					</ul>
 				: null
 			}

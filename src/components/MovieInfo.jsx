@@ -37,7 +37,6 @@ const MovieInfo = (props) => {
 							<StarRatings rating={vote_average} votes={vote_count} />
 							<h1 className="movieInfo-header">{title}</h1>
 							{ tagline === "" ? null : <p className="tagline">"{tagline}"</p> }
-							<p className="infoTitle movie-link"><a className="homepage-link" href={homepage}>Movie home page</a></p>
 							{/* { {homepage} ? <a className="homepage-link info" href={homepage}>Homepage</a> : null } */}
 							<p className="infoTitle">Genres:</p>
 							<p className="info">{ genres.map(genre => genre.name).join(', ') }</p>
@@ -48,18 +47,21 @@ const MovieInfo = (props) => {
 							<div className="misc-details">
 								<div className="misc">
 									<p className="infoTitle">Run Time</p>
-									<p className="info">{runtime} minutes</p>
+									{runtime ? <p className="info">{runtime} minutes</p> : <p className="info">No info</p> }
 								</div>
 								<div className="misc">
 									<p className="infoTitle">Revenue</p>
-									<p className="info">${revenue}</p>
+									{revenue === 0 ? <p className="info">No info</p> : <p className="info">${revenue.toLocaleString()}</p> }
 								</div>
 								<div className="misc">
 									<p className="infoTitle">Release Date</p>
-									<p className="info">{release_date.substring(5).split("-").concat(release_date.substring(0, 4)).join("/")}</p>
+									{ release_date === "" ? <p className="info">No info</p> :  <p className="info">{release_date.substring(5).split("-").concat(release_date.substring(0, 4)).join("/")}</p> }
 								</div>
 							</div>
-							<a href={`https://www.imdb.com/title/${imdb_id}/`}><p className="info anchor">Additional Information</p></a>
+							<br/>
+							<br/>
+							{homepage && <p className="infoTitle movie-link"><a className="homepage-link" href={homepage}>Movie home page</a></p>}
+							<a href={`https://www.imdb.com/title/${imdb_id}/`}><p className="info anchor">IMDB Additional Information</p></a>
 						</div> 
 					</div>
 				</div>

@@ -375,7 +375,6 @@ class App extends React.Component {
             pagination={this.pagination} 
             pageNum={this.state.pageNum} />
            : '' }
-
         { this.state.totalPages > 1 && this.state.movie === null ?
           <Pages
             nextPage={this.nextPage}

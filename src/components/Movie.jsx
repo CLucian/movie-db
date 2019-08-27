@@ -15,7 +15,7 @@ const Movie = (props) => {
 							:
 							<img src={`https://image.tmdb.org/t/p/w185${poster_path}`} className="movie-thumbnail" alt="card" />
 						}
-						<h1 className="movieHeader">{title} <br/> ({release_date.slice(0, 4)})</h1>
+						<h1 className="movieHeader">{title} <br/> { release_date === "" ? null : `(${release_date.slice(0, 4)})` }</h1>
 					</div>
 
 				</div>
