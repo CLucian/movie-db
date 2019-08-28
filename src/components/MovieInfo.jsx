@@ -42,8 +42,9 @@ const MovieInfo = (props) => {
 							<p className="info">{ genres.map(genre => genre.name).join(', ') }</p>
 							<p className="infoTitle">Overview:</p>
 							{ overview === "" ? <p className="info">There is no info for this movie</p> : <p className="info">{overview}</p> }
-							<p className="infoTitle">Production Companies:</p><p className="info">{production_companies.map(company => company.name).join(', ')}</p>
+							{ production_companies.length >= 1 ? <div><p className="infoTitle">Production Companies:</p><p className="info">{production_companies.map(company => company.name).join(', ')}</p></div> : null}
 							{/* <div className="production-imgs-container">{production_companies.map(img => img.logo_path && <div className="production-image-div"><img className="production-imgs" src={`https://image.tmdb.org/t/p/w92${img.logo_path}`} /></div>) }</div> */}
+							<br />
 							<div className="misc-details">
 								<div className="misc">
 									<p className="infoTitle">Run Time</p>
@@ -58,8 +59,6 @@ const MovieInfo = (props) => {
 									{ release_date === "" ? <p className="info">No info</p> :  <p className="info">{release_date.substring(5).split("-").concat(release_date.substring(0, 4)).join("/")}</p> }
 								</div>
 							</div>
-							<br/>
-							<br/>
 							{homepage && <p className="infoTitle movie-link"><a className="homepage-link" href={homepage}>Movie home page</a></p>}
 							<a href={`https://www.imdb.com/title/${imdb_id}/`}><p className="info anchor">IMDB Additional Information</p></a>
 						</div> 
