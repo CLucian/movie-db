@@ -20,6 +20,7 @@ class SearchBox extends Component {
 		return (
 			<div className="container-searchbox">
 				<div className="row">
+					<div className="fa fa-bars drop-down"></div>
 					<div className="discover">
 						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
 						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" /><span>Now Playing</span></button>
@@ -32,23 +33,13 @@ class SearchBox extends Component {
 						<button className="btn-genre" onClick={this.props.handleRomance}><img className="icon-picture" src={romance} alt="romance" /><span>Romance</span></button>
 						<button className="btn-genre" onClick={this.props.handleSciFi}><img className="icon-picture" src={sciFi} alt="sciFi" /><span>Sci-Fi</span></button>
 						<button className="btn-genre" onClick={this.props.handleWar}><img className="icon-picture" src={war} alt="war" /><span>War</span></button>
-
-						{/* <button className="discover__button" type="button" onClick={props.handleTrending}>Popular Movies</button> */}
 					</div>
 				</div>
 				<div className="row row2">
 					<form action="" onSubmit={this.props.handleSubmit} className="searchForm">
 						<div className="input-field">
-							<input placeholder="Search Movie Title..." /*{`${props.searchTerm}`}*/ type="text" onChange={this.props.handleChange} className="__searchTerm" />
+							<input className="__searchTerm" placeholder="Search Movie Title..." /*{`${props.searchTerm}`}*/ type="text" onChange={this.props.handleChange} />
 						</div>
-						{/* <div className="submit">{
-							props.searchTerm.length > 0 ? 
-							<button className="search-button" onClick={props.handleSubmit}>
-								<Search className="search-button__searchIcon" />
-							</button>
-							: null}
-						</div> */}
-
 					</form>
 				</div>		
 			</div>
@@ -59,8 +50,3 @@ class SearchBox extends Component {
 
 export default SearchBox;
 
-
-{/* <svg class="icon icon-search"> */ }
-{/* <use xlinkHref="img/SVG/search.svg#icon-search">
-								</use>
-							</svg> */}
