@@ -3,18 +3,26 @@ import Movie from './Movie';
 
 const MovieList = (props) => {
 
-	console.log('PROPS DOT MOVIES',props.movies)
+	console.log('PROPS DOT MOVIES', props.movies)
+	
 	return(
 		<div className="movie-container">
-			{props.movies
-				.map((movie) =>
-					<Movie
-						key={movie.id}
-						movie={movie}
-						setMovieInfo={props.setMovieInfo}
-						setSimilarMovieInfo={props.setSimilarMovieInfo} 
-					/>
-			)}
+		
+			{
+				props.movies.length === 0 ?
+				<h1 className="no-movie-text">Oops! We couldn't find that movie.</h1> :
+					props.movies
+						.map((movie) =>
+							<Movie
+								key={movie.id}
+								movie={movie}
+								setMovieInfo={props.setMovieInfo}
+								setSimilarMovieInfo={props.setSimilarMovieInfo} 
+							/>
+					)
+			}
+			
+
 		</div>
 	)
 }

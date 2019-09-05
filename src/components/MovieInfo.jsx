@@ -6,15 +6,15 @@ import { ReactComponent as Github } from "../img/SVG/github.svg";
 import { ReactComponent as Exit } from "../img/SVG/cross.svg";
 import SimilarMovieList from './SimilarMovieList';
 import StarRatings from './StarRatings';
-import { spawn } from 'child_process';
 
 
 const MovieInfo = (props) => {
 
 	const { poster_path, backdrop_path, overview, vote_average, release_date, title, genres, homepage, production_companies, vote_count, imdb_id, tagline, runtime, revenue } = props.currentMovie
 
-	console.log('ADSGFADFHGADFGAEFGASDFGFGFFGFGFGFGF', props.similarMovies)
-	console.log('asdfiuahsdfoiahsdoifhaiosdhfiahdf', props.currentMovie)
+	console.log('Similar Movies', props.similarMovies)
+	console.log('Current Movie', props.currentMovie)
+
 	return (
 		<div className="movieInfo-container">
 			<div className="backdrop">

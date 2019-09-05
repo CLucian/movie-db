@@ -282,8 +282,6 @@ class App extends React.Component {
 
   fetchSimilarMovieId = (id) => {
     const url = constructSimilarMovieIdURL(id);
-    
-  // `https://api.themoviedb.org/3/movie/${id}/similar?api_key=6b81323b3985de25250ad91d5c48d5b2`
 
     fetch(url)
     .then(res => res.json())
@@ -328,7 +326,6 @@ class App extends React.Component {
     if(!this.state.isLoaded) {
       return <div>LOADING...</div>
     }
-
 
 
     // const numberPages = Math.floor(this.state.totalResults / 20);

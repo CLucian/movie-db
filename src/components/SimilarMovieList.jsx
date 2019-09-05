@@ -3,9 +3,12 @@ import SimilarMovie from './SimilarMovie';
 
 const SimilarMovieList = (props) => {
 	
+
+	console.log('SIMILAR MOVIES PROPS', props.similarMovies)
+
 	return (
 		<div className="similarMovies-banner">
-			{props.similarMovies.length < 1 ? <h1 className="similarMovies-header">Sorry, we can't find any similar movies :'(</h1> : <h1 className="similarMovies-header">Some other movies you might enjoy ... </h1> }
+			{ props.similarMovies.length < 1 ? <h1 className="similarMovies-header">Sorry, we can't find any similar movies :'(</h1> : <h1 className="similarMovies-header">Some other movies you might enjoy ... </h1> }
 			<div className="similar-movie-container ">
 				{props.similarMovies
 					.slice(0, 5)

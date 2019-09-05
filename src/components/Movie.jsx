@@ -5,6 +5,8 @@ import React from 'react';
 const Movie = (props) => {
 
 	const { title, id, poster_path, release_date } = props.movie
+
+	console.log('HERE IS THE MOVIE PROPS', props.movie)
 	
 	return(
 			<div className="movie-card">

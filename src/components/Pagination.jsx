@@ -49,19 +49,10 @@ const Pagination = (props) => {
 	
 
 
-
-	// console.log('Start Page:', startPage);
-	// console.log('End Page:', endPage);
-	// console.log('Total Pages', totalPages);
-
-
 	for(let i = startPage; i <= endPage; i++) {
 		pageLinks.push(
 			<li key={i + 'z'} className="pageNumbers" style={{textDecoration: currentPage === i ? 'underline': 'none', pointerEvents: currentPage === i ? 'none': '' }} onClick={() => props.pagination(i)}><a href="#top">{i}</a></li>
 		);
-
-		// console.log('This is the current page number:', currentPage)
-		// console.log('THIS IS THE TOTAL NUMBER OF PAGES:', totalPages);
 	}
 
 
@@ -75,9 +66,7 @@ const Pagination = (props) => {
 						{pageLinks}
 						<li>...</li>
 						<li className="pageNumbers" style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#top">Last Page</a></li>	
-						<a href="#" className="back-to-top">
-							<span className="fa fa-arrow-up"></span>
-						</a>
+							<span className="fa fa-arrow-up"></span>						
 					</ul>
 				: null
 			}
