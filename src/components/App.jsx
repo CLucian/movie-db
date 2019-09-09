@@ -3,6 +3,7 @@ import React from 'react';
 import { debounce } from 'lodash';
 
 // component imports
+import DropDown from './DropDown';
 import MovieList from './MovieList';
 import Pagination from './Pagination';
 import Pages from './Pages';
@@ -331,6 +332,8 @@ class App extends React.Component {
     // const numberPages = Math.floor(this.state.totalResults / 20);
 
     return (
+
+
       <div className={`App ${this.state.movie && 'some-class'}`}>
         {/* example error handling */}
         {/* this.state.customError && <div>
@@ -339,9 +342,11 @@ class App extends React.Component {
             {this.state.customError}
             <button onClick={() => this.setState({customError: null})}>Close</button>
         </div> */}
-
+        
         {this.state.movie === null ? 
           <div>
+          <DropDown />
+          
             <SearchBox
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}

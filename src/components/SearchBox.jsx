@@ -11,6 +11,7 @@ import romance from '../img/SVG/rose.png';
 import sciFi from '../img/SVG/leo.png';
 import stats from '../img/SVG/stats.png'
 import war from '../img/SVG/war.png';
+import DropDown from './DropDown';
 
 
 // import { ReactComponent as Search } from "../img/SVG/search.svg";
@@ -20,7 +21,8 @@ class SearchBox extends Component {
 		return (
 			<div className="container-searchbox">
 				<div className="row">
-					<div className="fa fa-bars drop-down"></div>
+					{/* <div className="fa fa-bars drop-down"></div> */}
+					{/* <DropDown /> */}
 					<div className="discover">
 						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
 						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" /><span>Now Playing</span></button>
