@@ -1,6 +1,6 @@
 
-
 .container {
+  // position: relative;
 	padding-top: 2rem;
 	padding-right: 3rem;
 	position: relative;
@@ -9,19 +9,25 @@
 }
 
 .drop-down {
-	font-size: 4.5rem;
+  position: absolute;
+	font-size: 5rem;
 	background-color: transparent;
 	border: none;
 	color: white;
-	position: fixed;
 	right: 0;
-	// padding-top: 2rem;
   margin-right: 5rem;
   outline: none;
 	
 }
 
+.drop-down:hover {
+  transform: scale(0.85);
+  transition-duration: 0.5s;
+}
+
+
 .dropdown {
+  border-radius: 0.3rem;
   position: absolute;
   top: 7rem;
   right: 0;
@@ -32,7 +38,7 @@
   background-color: white;
   color: black;
   text-align: center;
-  margin-right: 7.8rem;
+  margin-right: 5.1rem;
 }
 
 ul {
@@ -41,9 +47,21 @@ ul {
   margin: 0;
   // padding-left: 3rem;
 }
+
 li {
   padding: 0.8rem 1.2rem;
 }
+
+
+li:hover {
+  transform: scale(0.9);
+  transition-duration: 0.5s;
+}
+
+// li:hover {
+//   transform: scale(0.9);
+//   transition-duration: 0.5s;
+// }
 
 li:hover {
   background-color: rgba(0, 0, 0, 0.14);

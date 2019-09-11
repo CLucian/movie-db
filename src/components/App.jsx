@@ -143,7 +143,6 @@ class App extends React.Component {
   }
 
 
-
   ///////////////////////////////
   // API FETCHING
   ///////////////////////////////
@@ -345,14 +344,25 @@ class App extends React.Component {
         
         {this.state.movie === null ? 
           <div>
-          <DropDown />
+            <DropDown
+              handleNowPlaying={this.handleNowPlaying}
+              handleTopRated={this.handleTopRated}
+              handleAction={this.handleAction}
+              handleAdventure={this.handleAdventure}
+              handleComedy={this.handleComedy}
+              handleCrime={this.handleCrime}
+              handleHorror={this.handleHorror}
+              handleRomance={this.handleRomance}
+              handleSciFi={this.handleSciFi}
+              handleWar={this.handleWar}
+            />
           
             <SearchBox
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               handleTrending={this.handleTrending}
               handleNowPlaying={this.handleNowPlaying}
-              searchTerm={this.state.searchTerm}
+              // searchTerm={this.state.searchTerm}
               handleTopRated={this.handleTopRated}
               handleAction={this.handleAction}
               handleAdventure={this.handleAdventure}

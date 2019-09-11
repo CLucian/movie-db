@@ -1,8 +1,8 @@
 import React from 'react';
 
 class DropDown extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = { 
 			open : false
 		}
@@ -41,22 +41,22 @@ class DropDown extends React.Component {
 
 	render() {
 		return(
-			<div className="navbar-drop">
+			<div className="navbar-drop"> 
 				<div className="container" ref={this.container}>
 					<button type="button" class="button" className="button fa fa-bars drop-down" onClick={this.handleButtonClick}></button>
 					{ this.state.open && (
 						<div className="dropdown">
 							<ul className="genre-lists">
-								<li>Now Playing</li>
-								<li>Top Rated</li>
-								<li>Action</li>
-								<li>Adventure</li>
-								<li>Comedy</li>
-								<li>Crime</li>
-								<li>Horror</li>
-								<li>Romance</li>
-								<li>Sci-Fi</li>
-								<li>War</li>
+								<li onClick={this.props.handleNowPlaying}>Now Playing</li>
+								<li onClick={this.props.handleTopRated}>Top Rated</li>
+								<li onClick={this.props.handleAction}>Action</li>
+								<li onClick={this.props.handleAdventure}>Adventure</li>
+								<li onClick={this.props.handleComedy}>Comedy</li>
+								<li onClick={this.props.handleCrime}>Crime</li>
+								<li onClick={this.props.handleHorror}>Horror</li>
+								<li onClick={this.props.handleRomance}>Romance</li>
+								<li onClick={this.props.handleSciFi}>Sci-Fi</li>
+								<li onClick={this.props.handleWar}>War</li>
 							</ul>
 					</div>
 					)}
