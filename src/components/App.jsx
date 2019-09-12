@@ -131,7 +131,7 @@ class App extends React.Component {
   }
 
   handleCategory = (category) => {
-    this.setState({ pageNum: 1 }, () => this.fetchCategory(category))
+    this.setState({ pageNum: 1, searchTerm: '' }, () => this.fetchCategory(category))
   }
 
 
