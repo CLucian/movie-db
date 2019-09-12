@@ -12,8 +12,6 @@ const MovieInfo = (props) => {
 
 	const { poster_path, backdrop_path, overview, vote_average, release_date, title, genres, homepage, production_companies, vote_count, imdb_id, tagline, runtime, revenue } = props.currentMovie
 
-	console.log('Similar Movies', props.similarMovies)
-	console.log('Current Movie', props.currentMovie)
 
 	return (
 		<div className="movieInfo-container">
@@ -66,7 +64,6 @@ const MovieInfo = (props) => {
 				</div>
 				<SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} />
 			</div>
-			{/* <SimilarMovieList similarMovies={props.similarMovies} setMovieInfo={props.setMovieInfo} setSimilarMovieInfo={props.setSimilarMovieInfo} /> */}
 		</div>
 	)
 }

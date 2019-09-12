@@ -5,8 +5,6 @@ export function paginationNumber(currentPage, totalPages) {
 	let endPage;
 	let page1 = 1;
 
-
-	console.log('TOTAL NUMBER OF PAGES', totalPages); 
 	if (totalPages <= 5) {
 		startPage = 1;
 		endPage = totalPages;
@@ -66,26 +64,12 @@ const Pagination = (props) => {
 						{pageLinks}
 						<li>...</li>
 						<li className="pageNumbers" style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(totalPages)}><a href="#top">Last Page</a></li>	
-							{/* <span className="fa fa-arrow-up"></span>						 */}
 					</ul>
 				: null
 			}
 		</div>
 	)
 }
-
-// {
-// 	props.totalPages > 1 ?
-// 		<ul className="pagination-links">
-// 			<li style={{ pointerEvents: currentPage === 1 ? 'none' : '' }} onClick={() => props.pagination(1)}><a href="#">First Page</a></li>
-// 			<li>...</li>
-// 			{pageLinks}
-// 			<li>...</li>
-// 			<li style={{ pointerEvents: currentPage === totalPages ? 'none' : '' }} onClick={() => props.pagination(props.totalPages)}><a href="#">Last Page</a></li>
-// 		</ul>
-// 		: null
-// }
-
 
 
 export default Pagination;

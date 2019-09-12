@@ -1,6 +1,5 @@
 // import React, { Component } from 'react';
 import React from 'react';          
-import { debounce } from 'lodash';
 
 // component imports
 import DropDown from './DropDown';
@@ -9,7 +8,6 @@ import Pagination from './Pagination';
 import Pages from './Pages';
 import SearchBox from './SearchBox';
 import MovieInfo from './MovieInfo';
-import StarRatings from './StarRatings';
 // import Movie from './Movie';
 
 
@@ -31,12 +29,6 @@ import {
   isGenre,
   isCategory
 } from '../utils/helpers'
-
-// import { constructTrendingURL, constructSearchURL, constructNowPlayingURL, constructTopRatedURL, constructActionURL, constructAdventureURL,
-//   constructComedyURL, constructCrimeURL, constructHorrorURL, constructRomanceURL, constructSciFiURL, constructWarURL
-// } from '../utils/url.js';
-
-
 
 
 
@@ -120,7 +112,7 @@ class App extends React.Component {
   }
 
   handleGenre = (genre) => {
-    this.setState({ pageNum: 1 }, () => this.fetchGenre(genre))
+    this.setState({ pageNum: 1, searchTerm: '' }, () => this.fetchGenre(genre))
   }
 
   fetchCategory = (category) => {
@@ -171,7 +163,6 @@ class App extends React.Component {
 
   handleChange = (e) => {
     this.setState({ searchTerm: e.target.value });
-    // Took out pageNum: 1  in the state
   }
 
   handleSubmit = (e) => {
@@ -180,25 +171,6 @@ class App extends React.Component {
       this.fetchMovies(this.state.searchTerm);
     });
   }
-
-
-// This doesn't work properly
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('----THIS IS THE CURRENT SEARCH TERM-----:', this.state.searchTerm);
-  //   console.log('----THIS IS THE CURRENT MOVIE DATA-----:', this.state.movies);
-  //   if(this.state.searchTerm.length === 0) {
-  //     this.setState({ movies: [], searchTerm: '', totalPages: null }, () => {
-  //       this.fetchMovies(this.state.searchTerm);
-  //     })
-  //   } else {
-
-  //   this.setState({ pageNum: 1 }, () => {
-  //     this.fetchMovies(this.state.searchTerm);
-  //   });
-  //   }
-  // }
-  
 
   componentDidMount(){
 
@@ -217,11 +189,8 @@ class App extends React.Component {
     if (this.state.movies.length === 0) {
       return 
     } 
-    console.log("PAGE NUMBER:", pageNumber)
     if (dir === 1){
       pageNumber += 1;
-      
-    console.log("PAGE NUMBER:", pageNumber)
     } else if (dir === -1 && pageNumber > 1) {
       pageNumber -= 1;
     }
@@ -256,10 +225,6 @@ class App extends React.Component {
   ///////////////////////////////x
 
   setMovieInfo = (id) => {
-    // const filteredMovie = this.state.movies.filter(movie => movie.id === id)
-    // const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
-
-    // this.setState({ currentMovie: newCurrentMovie })
     this.fetchMovieId(id)
   }
 
@@ -296,25 +261,6 @@ class App extends React.Component {
   setSimilarMovieInfo = (id) => {
     this.fetchSimilarMovieId(id)
   }
- 
-  // fetchMovieTrailer = (id) => {
-  //   const url = 'https://api.themoviedb.org/3/movie/${id}/videos?api_key=6b81323b3985de25250ad91d5c48d5b2';
-
-
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       console.log(json)
-  //       this.setState({
-  //         movieTrailer: json.results
-  //       })
-  //     })
-  // }
-
-  // setMovieTrailer = (id) => {
-  //   this.fetchMovieTrailer(id)
-  // }
-
 
 
 
@@ -327,8 +273,6 @@ class App extends React.Component {
       return <div>LOADING...</div>
     }
 
-
-    // const numberPages = Math.floor(this.state.totalResults / 20);
 
     return (
 
@@ -362,7 +306,7 @@ class App extends React.Component {
               handleChange={this.handleChange}
               handleTrending={this.handleTrending}
               handleNowPlaying={this.handleNowPlaying}
-              // searchTerm={this.state.searchTerm}
+              searchTerm={this.state.searchTerm}
               handleTopRated={this.handleTopRated}
               handleAction={this.handleAction}
               handleAdventure={this.handleAdventure}
@@ -401,15 +345,3 @@ class App extends React.Component {
   }
 }
 export default App;
-
-
-
-// API KEY  6b81323b3985de25250ad91d5c48d5b2
-
-
-// TO DO LIST
-
-// 1. add an active page underline when you are on the page + add unclickable active page
-// 2. add a click to go to next page function.
-// 3. If typed something nonsensical in search --> output "Sorry we couldn't find that page"
-// 4. add a first and last page

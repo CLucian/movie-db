@@ -18,12 +18,6 @@ const StarRatings = (props) => {
 		return Math.round(num * 2) / 2 * 10
 	}
 
-
-
-
-
-	console.log('THIS IS THE VOTE AVERAGE', props.rating)
-
 	return(
 		<div>
 			<div class="rating-star">

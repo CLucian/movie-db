@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Pages = (props) => {
-	
-	console.log('CURRENT PAGE:', props.pageNum, 'TOTAL PAGES:', props.totalPages);
 
 	let totalPages = props.totalPages
 

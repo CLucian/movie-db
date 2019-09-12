@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { ReactComponent as Discover } from "../img/SVG/ticket.svg";
-import { ReactComponent as Stats } from "../img/SVG/stats-dots.svg";
 import comedy from '../img/SVG/comedy.png';
 import action from '../img/SVG/Arnold.png';
 import adventure from '../img/SVG/Sheen.png';
@@ -11,20 +9,14 @@ import romance from '../img/SVG/rose.png';
 import sciFi from '../img/SVG/leo.png';
 import stats from '../img/SVG/stats.png'
 import war from '../img/SVG/war.png';
-import DropDown from './DropDown';
 
-
-// import { ReactComponent as Search } from "../img/SVG/search.svg";
 
 class SearchBox extends Component {
 	render() {
 		return (
 			<div className="container-searchbox">
 				<div className="row">
-					{/* <div className="fa fa-bars drop-down"></div> */}
-					{/* <DropDown /> */}
 					<div className="discover">
-						{/* <Discover className="discoverbtn" onClick={this.props.handleTrending} /> */}
 						<button className="btn-genre" onClick={this.props.handleNowPlaying}><img className="icon-picture" src={playing} alt="now playing" /><span>Now Playing</span></button>
 						<button className="btn-genre" onClick={this.props.handleTopRated}><img className="icon-picture" src={stats} alt="top rated" /><span>Top Rated</span></button>
 						<button className="btn-genre" onClick={this.props.handleAction}><img className="icon-picture" src={action} alt="action" /><span>Action</span></button>
@@ -40,7 +32,7 @@ class SearchBox extends Component {
 				<div className="row row2">
 					<form action="" onSubmit={this.props.handleSubmit} className="searchForm">
 						<div className="input-field">
-							<input className="__searchTerm" placeholder="Search Movie Title..." /*{`${props.searchTerm}`}*/ type="text" onChange={this.props.handleChange} />
+							<input value={this.props.searchTerm} className="__searchTerm" placeholder="Search Movie Title..." type="text" onChange={this.props.handleChange} />
 						</div>
 					</form>
 				</div>		

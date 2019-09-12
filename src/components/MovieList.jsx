@@ -2,8 +2,6 @@ import React from 'react';
 import Movie from './Movie';
 
 const MovieList = (props) => {
-
-	console.log('PROPS DOT MOVIES', props.movies)
 	
 	return(
 		<div className="movie-container">
