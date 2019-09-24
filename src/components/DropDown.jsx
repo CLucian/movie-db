@@ -43,7 +43,7 @@ class DropDown extends React.Component {
 		return(
 			<div className="navbar-drop"> 
 				<div className="container" ref={this.container}>
-					<button type="button" class="button" className="button fa fa-bars drop-down" onClick={this.handleButtonClick}></button>
+					<button type="button" className="button fa fa-bars drop-down" onClick={this.handleButtonClick}></button>
 					{ this.state.open && (
 						<div className="dropdown">
 							<ul className="genre-lists">
