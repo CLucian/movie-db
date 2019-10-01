@@ -33,8 +33,8 @@ import {
 
 
 class App extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.resultsType = ''
 
@@ -55,9 +55,15 @@ class App extends React.Component {
     }
 
     // GENRE
+    // Creates a new function by binding the context (this) and argument (genre/category/pageNum) to a function
+
+
+    // PAGE NUMBER / DIRECTIONAL
     this.nextPage = this.changePage.bind(this, 1);
     this.prevPage = this.changePage.bind(this, -1);
 
+
+    // GENRE
     this.fetchAction = this.fetchGenre.bind(this, 'action')
     this.handleAction = this.handleGenre.bind(this, 'action')
 
@@ -94,6 +100,8 @@ class App extends React.Component {
 
 
   }
+
+
 
 
   fetchGenre = (genre) => {
@@ -140,6 +148,23 @@ class App extends React.Component {
   ///////////////////////////////
   
 
+  // Sets the searchTerm state to what is typed in the input value
+  handleChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  }
+
+  // Calls fetchMovies when the search term is submitted
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // Page number set to 1 so if we switch from a previous page (ex: page 10) our page we view won't also be page 10 but page 1
+    this.setState({ pageNum: 1 }, () => {
+      // Calls fetchMovie API fetch for typed search term
+      this.fetchMovies(this.state.searchTerm);
+    });
+  }
+
+
+  // API fetch to TMDB, sets movie state and total pages to API results
   fetchMovies = (search) => {
     this.resultsType = search;
 
@@ -154,6 +179,8 @@ class App extends React.Component {
             totalPages: json.total_pages
           })
         }
+
+        // Just in case an JSON does not provide a results field
         else {
           this.setState({ movies: [] });
         }
@@ -161,19 +188,9 @@ class App extends React.Component {
       .catch((err) => console.log('PARSING FAILURE', err));
   }
 
-  handleChange = (e) => {
-    this.setState({ searchTerm: e.target.value });
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ pageNum: 1 }, () => {
-      this.fetchMovies(this.state.searchTerm);
-    });
-  }
-
+  
+  // Loads fetchNowPlaying movies when default page loads
   componentDidMount(){
-
     this.fetchNowPlaying();
   }
 
@@ -183,27 +200,36 @@ class App extends React.Component {
   ///////////////////////////////
 
   // dir = direction
+  
+
   changePage = (dir) => {
     let pageNumber = this.state.pageNum;
 
+    // If no input --> return same page
     if (this.state.movies.length === 0) {
       return 
     } 
+    // If moving forward on pages, increases the page number by 1
     if (dir === 1){
       pageNumber += 1;
+    // If moving backwards on pages AND page number is already greater than 1, then decreases page number by 1
     } else if (dir === -1 && pageNumber > 1) {
       pageNumber -= 1;
     }
+    // Afterwards updates state and runs the handleGenreOrCategory function
     this.setState({
       pageNum: pageNumber
     }, this.handleGenreOrCategory)
   }
 
   handleGenreOrCategory() {
+    // Communicates with helper function isGenre (in helpers.js) to determine if this.resultsType includes a genre in the isGenre function and runs fetchGenre if so
     if (isGenre(this.resultsType)) {
       this.fetchGenre(this.resultsType)
+    // Communicates with helper function isCategory (in helpers.js) to determine if this.resultsType includes a genre in the isCategory function and runs fetchCategory if so
     } else if (isCategory(this.resultsType)) {
       this.fetchCategory(this.resultsType)
+    // If none of the functions above are satisfied, will fetchMovies with search resultsType (in case of error)
     } else {
       this.fetchMovies(this.resultsType)
     }
@@ -224,17 +250,19 @@ class App extends React.Component {
   // MOVIE OVERVIEW
   ///////////////////////////////x
 
+
   setMovieInfo = (id) => {
     this.fetchMovieId(id)
   }
 
+
+  // fetches API from url in url file (constructMovieIdURL) which takes in the ID of a specific movie, then sets movie state to result of movie from API
   fetchMovieId = (id) => {
     const url = constructMovieIdURL(id)
 
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         this.setState({
           movie: json
         })
@@ -285,7 +313,7 @@ class App extends React.Component {
             {this.state.customError}
             <button onClick={() => this.setState({customError: null})}>Close</button>
         </div> */}
-        
+      
         {this.state.movie === null ? 
           <div>
             <DropDown

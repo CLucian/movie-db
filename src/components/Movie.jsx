@@ -9,15 +9,14 @@ const Movie = (props) => {
 	return(
 			<div className="movie-card">
 				<div>
-				<div onClick={() => {props.setMovieInfo(id); props.setSimilarMovieInfo(id)}}>
-						{poster_path == null ?
-							<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
-							:
-							<img src={`https://image.tmdb.org/t/p/w185${poster_path}`} className="movie-thumbnail" alt="card" />
-						}
-						<h1 className="movieHeader">{title} <br/> { release_date === "" ? null : `(${release_date.slice(0, 4)})` }</h1>
+					<div onClick={() => {props.setMovieInfo(id); props.setSimilarMovieInfo(id)}}>
+							{poster_path == null ?
+								<img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} className="movie-thumbnail" alt="card" style={{ width: "185px", height: "278px" }} />
+								:
+								<img src={`https://image.tmdb.org/t/p/w185${poster_path}`} className="movie-thumbnail" alt="card" />
+							}
+							<h1 className="movieHeader">{title} <br/> { release_date === "" ? null : `(${release_date.slice(0, 4)})` }</h1>
 					</div>
-
 				</div>
 			</div>
 		)
