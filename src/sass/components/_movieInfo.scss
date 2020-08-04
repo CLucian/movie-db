@@ -207,15 +207,6 @@ img .backdrop--movieBackground {
 
 
 
-
-// .discoverbtn {
-// 	padding-top: 1.3rem;
-// 	fill: #00FC87;
-// 	cursor: pointer;
-// }
-
-
-
 .grayStars {
 	position: relative;
 	display: inline-block;
@@ -279,23 +270,9 @@ a {
 .anchor:hover {
 	transform: scale(1.15);
 	transition-duration: 0.1s;
-	color: #00FC87
+	color: #6495ED;
 }
 
-.production-imgs-container {
-	background-color: #00FC87;
-	text-align: center;
-	vertical-align: center;
-	border-radius: 0.5rem;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	margin-bottom: 2rem;
-}
-
-.production-imgs {
-	// display: inline;	
-}
 
 .back-to-top {
 	display: flex;

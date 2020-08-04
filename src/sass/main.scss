@@ -1,11 +1,4 @@
-// @import "base/base";
 
-// @import "variables/variables";
-
-
-// @import "components/footer";
-// @import "components/header";
-// @import "components/body";
 @import "components/movie";
 @import "components/movieInfo";
 @import "components/queries";
@@ -33,34 +26,17 @@ $color2: #1F3944;
 $color3: white;
 
 
-// #E3AFBC
-// #9A1750
-// #EE4C7C
-
-
-
-// font-family: 'Roboto Condensed', sans-serif;
-// font-family: 'Oswald', sans-serif;
-
 
 html {
 	font-size: 62.5%;
 }
 
 
-.hero-box {
-	// opacity: 0.6;
-
-	// display: flex;
-
-}
-
 
 .row {
 	display: flex;
 	justify-content: center;
-	// align-items: stretch;
-	// align-content: stretch;
+
 }
 
 .row2 {
@@ -78,32 +54,6 @@ html {
 
 	}
 }
-
-
-// .search-button {
-// 	position: absolute;
-// 	bottom: 2.07rem;
-// 	border-radius: 5rem;
-// 	border: none;
-// 	background-color: transparent;
-// 	height: 0.8rem;
-// 	cursor: pointer;
-
-// 	&:focus {
-// 		outline: none;
-// 	}
-
-// 	&:active {
-// 		transform: translateY(0.2rem);
-// 	}
-
-// 	&__searchIcon {
-// 	height: 2rem;
-// 	width: 2rem;
-	
-// 	}	
-
-// }
 
 
 
