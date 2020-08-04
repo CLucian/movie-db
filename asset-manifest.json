@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/movie-db/static/css/main.c3910ce3.chunk.css",
+    "main.js": "/movie-db/static/js/main.36e4297a.chunk.js",
+    "main.js.map": "/movie-db/static/js/main.36e4297a.chunk.js.map",
+    "runtime~main.js": "/movie-db/static/js/runtime~main.5114c00d.js",
+    "runtime~main.js.map": "/movie-db/static/js/runtime~main.5114c00d.js.map",
+    "static/js/2.54515ec5.chunk.js": "/movie-db/static/js/2.54515ec5.chunk.js",
+    "static/js/2.54515ec5.chunk.js.map": "/movie-db/static/js/2.54515ec5.chunk.js.map",
+    "index.html": "/movie-db/index.html",
+    "precache-manifest.4d11444b63a33bbcf23db65868d6ace9.js": "/movie-db/precache-manifest.4d11444b63a33bbcf23db65868d6ace9.js",
+    "service-worker.js": "/movie-db/service-worker.js",
+    "static/css/main.c3910ce3.chunk.css.map": "/movie-db/static/css/main.c3910ce3.chunk.css.map",
+    "static/media/Sheen.png": "/movie-db/static/media/Sheen.58ecf692.png",
+    "static/media/comedy.png": "/movie-db/static/media/comedy.6fa59054.png",
+    "static/media/cross.91159e72.svg": "/movie-db/static/media/cross.91159e72.svg",
+    "static/media/github.1fc7ff0b.svg": "/movie-db/static/media/github.1fc7ff0b.svg",
+    "static/media/main.scss": "/movie-db/static/media/imageTheatre.a626983f.jpg",
+    "static/media/instagram.c057d500.svg": "/movie-db/static/media/instagram.c057d500.svg",
+    "static/media/leo.png": "/movie-db/static/media/leo.42534d31.png",
+    "static/media/search.bf3113cd.svg": "/movie-db/static/media/search.bf3113cd.svg",
+    "static/media/twitter.6134b234.svg": "/movie-db/static/media/twitter.6134b234.svg",
+    "static/media/war.png": "/movie-db/static/media/war.2ddd09eb.png"
+  }
+}
