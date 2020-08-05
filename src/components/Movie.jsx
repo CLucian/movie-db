@@ -6,6 +6,7 @@ const Movie = (props) => {
 
 	const { title, id, poster_path, release_date } = props.movie
 	
+	console.log('THIS IS THE RELEASE DATE', release_date)
 	return(
 			<div className="movie-card">
 				<div>
@@ -15,7 +16,8 @@ const Movie = (props) => {
 								:
 								<img src={`https://image.tmdb.org/t/p/w185${poster_path}`} className="movie-thumbnail" alt="card" />
 							}
-							<h1 className="movieHeader">{title} <br/> { release_date === "" ? null : `(${release_date.slice(0, 4)})` }</h1>
+
+							<h1 className="movieHeader">{title} <br/> { (release_date === "" || release_date === undefined ) ? null : `(${release_date.slice(0, 4)})` }</h1>
 					</div>
 				</div>
 			</div>
